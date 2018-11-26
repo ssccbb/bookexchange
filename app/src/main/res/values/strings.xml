@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">易书</string>
+    <string name="app_des">以书易书</string>
+
+    <string name="skip_hint">跳过</string>
+</resources>

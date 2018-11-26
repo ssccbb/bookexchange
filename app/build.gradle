@@ -1,0 +1,120 @@
+apply plugin: 'com.android.application'
+
+//获取当前系统的时间
+def releaseTime() {
+    return new Date().format("yyMMdd", TimeZone.getTimeZone("UTC"))
+}
+android {
+    def app_name = "BookEx"
+
+    compileSdkVersion rootProject.compileSdkVersion
+    defaultConfig {
+        applicationId "com.sung.bookexchange"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("../extras/keystore/sung723.jks")
+            keyAlias 'sung723'
+            keyPassword '646693'
+            storePassword '646693'
+        }
+
+        release {
+            storeFile file("../extras/keystore/sung723.jks")
+            keyAlias 'sung723'
+            keyPassword '646693'
+            storePassword '646693'
+        }
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField 'String', 'Sever', '""'
+            System.out.println("buildDebug-----------------------------------------------------------")
+
+            signingConfig signingConfigs.debug
+        }
+
+        release {
+            buildConfigField 'String', 'Sever', '""'
+            System.out.println("buildRelease-----------------------------------------------------------")
+
+            zipAlignEnabled true
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    applicationVariants.all { variant ->
+        if (variant.name.endsWith("Release") || variant.name.endsWith("release")) {
+            variant.outputs.all { output ->
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    def fileName
+                    fileName = "${app_name}_Release_${defaultConfig.versionName}_${releaseTime()}" + ".apk"
+                    outputFileName = fileName
+                }
+            }
+        } else {
+            variant.outputs.all { output ->
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    def fileName
+                    fileName = "${app_name}_Debug_${defaultConfig.versionName}_${releaseTime()}" + ".apk"
+                    outputFileName = fileName
+                }
+            }
+        }
+
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+        preDexLibraries = false
+        jumboMode true
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'org.jetbrains:annotations:15.0'
+    testImplementation 'junit:junit:4.12'
+    /* butterknife */
+    implementation 'com.jakewharton:butterknife:9.0.0-rc1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
+    /* eventbus */
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    /* fresco */
+    implementation 'com.facebook.fresco:fresco:1.11.0'
+    /* gson */
+    implementation 'com.google.code.gson:gson:2.8.2'
+    /* retrofit */
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation project(':net')
+}
