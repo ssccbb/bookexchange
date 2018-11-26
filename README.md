@@ -9,4 +9,4 @@
 * retrofit
 
 备注
-retrofit使用的是[!https://github.com/JessYanCoding/RetrofitUrlManager](https://github.com/JessYanCoding/RetrofitUrlManager)
+retrofit使用的是[https://github.com/JessYanCoding/RetrofitUrlManager](https://github.com/JessYanCoding/RetrofitUrlManager)
