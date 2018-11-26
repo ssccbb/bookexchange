@@ -21,15 +21,15 @@ android {
         debug {
             storeFile file("../extras/keystore/sung723.jks")
             keyAlias 'sung723'
-            keyPassword '646693'
-            storePassword '646693'
+            keyPassword '******'
+            storePassword ''******''
         }
 
         release {
             storeFile file("../extras/keystore/sung723.jks")
             keyAlias 'sung723'
-            keyPassword '646693'
-            storePassword '646693'
+            keyPassword ''******''
+            storePassword ''******''
         }
     }
 
