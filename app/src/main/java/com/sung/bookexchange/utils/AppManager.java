@@ -8,6 +8,7 @@ package com.sung.bookexchange.utils;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 
 import com.sung.bookexchange.ui.activity.BaseActivity;
 
@@ -17,7 +18,7 @@ import java.util.Stack;
  * Activity管理类
  */
 public class AppManager {
-    private static Stack<BaseActivity> activityStack;
+    private static Stack<AppCompatActivity> activityStack;
 
     private AppManager() {
     }
@@ -36,9 +37,9 @@ public class AppManager {
     /**
      * 添加BaseActivity到堆栈
      */
-    public void addActivity(BaseActivity activity) {
+    public void addActivity(AppCompatActivity activity) {
         if (activityStack == null) {
-            activityStack = new Stack<BaseActivity>();
+            activityStack = new Stack<AppCompatActivity>();
         }
         activityStack.add(activity);
     }
@@ -46,8 +47,8 @@ public class AppManager {
     /**
      * 获取当前Activity（堆栈中最后一个压入的）
      */
-    public BaseActivity currentActivity() {
-        BaseActivity activity = activityStack.lastElement();
+    public AppCompatActivity currentActivity() {
+        AppCompatActivity activity = activityStack.lastElement();
         return activity;
     }
 
@@ -56,7 +57,7 @@ public class AppManager {
      */
     public void finishActivity() {
         try{
-            BaseActivity activity = activityStack.lastElement();
+            AppCompatActivity activity = activityStack.lastElement();
             finishActivity(activity);
         }catch (Exception e){
         }
@@ -65,7 +66,7 @@ public class AppManager {
     /**
      * 结束指定的Activity
      */
-    public void finishActivity(BaseActivity activity) {
+    public void finishActivity(AppCompatActivity activity) {
         try {
             if (activity != null) {
                 activityStack.remove(activity);
@@ -81,7 +82,7 @@ public class AppManager {
      */
     public void finishActivity(Class<?> cls) {
         try{
-            for (BaseActivity activity : activityStack) {
+            for (AppCompatActivity activity : activityStack) {
                 if (activity.getClass().equals(cls)) {
                     finishActivity(activity);
                 }

@@ -1,7 +1,14 @@
 package com.sung.bookexchange;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.TextView;
 
 import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.common.internal.Supplier;
@@ -9,6 +16,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.sung.bookexchange.common.BaseApplication;
 import com.sung.bookexchange.common.Constants;
+import com.sung.bookexchange.utils.AppManager;
 import com.sung.bookexchange.utils.Log;
 
 import java.io.File;
@@ -29,7 +37,7 @@ import static com.sung.bookexchange.api.Api.GITHUB_DOMAIN_NAME;
  */
 public class BookApplication extends BaseApplication {
 
-    private BookApplication() {
+    public BookApplication() {
     }
 
     public static BookApplication getInstance(){

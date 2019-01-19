@@ -4,10 +4,17 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.TextView;
 
 import com.sung.bookexchange.BookApplication;
+import com.sung.bookexchange.R;
+import com.sung.bookexchange.common.ToolbarConfig;
 import com.sung.bookexchange.ui.fragment.BaseFragment;
+import com.sung.bookexchange.utils.Log;
+import com.sung.bookexchange.utils.ScreenUtils;
 
 import butterknife.ButterKnife;
 
@@ -24,10 +31,40 @@ public abstract class BaseActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        System.gc();
+    /**
+     * 接入Toolbar的配置
+     *
+     * @notice toolbar的加入使用的是application注册lifecycle的方式
+     *         此方法调用需要在onStart()之后
+     * */
+    protected void acceptToolbarConfig(ToolbarConfig config){
+        if (this.getSupportActionBar() == null) return;
+        try {
+            ActionBar bar = getSupportActionBar();
+            bar.setDisplayHomeAsUpEnabled(config.isDisplayBackAsUpEnable());
+            bar.setDisplayShowTitleEnabled(config.isDisplayTitleEnable());
+            bar.setDisplayUseLogoEnabled(config.isDisplayLogoEnable());
+            bar.setSubtitle(config.isDisplaySubTitleEnable() ? config.getTextSubTitle() : "");
+            bar.setTitle(config.getTextTitle());
+            if (config.getResLogo() != -99) bar.setLogo(config.getResLogo());
+            if (config.isDisplayCenterTitleEnable()) {
+                bar.setDisplayShowTitleEnabled(false);
+                bar.setSubtitle("");
+                if (this.findViewById(R.id.tv_title) != null) {
+                    TextView centerTitle = this.findViewById(R.id.tv_title);
+                    centerTitle.setVisibility(View.VISIBLE);
+                    centerTitle.setText(config.getTextTitle());
+                }
+            }
+            if (config.getColorBackground() != -99) {
+                bar.setBackgroundDrawable(getResources().getDrawable(config.getColorBackground()));
+            }
+            if (config.isDisplayElevationEnable()){
+                bar.setElevation(config.isDisplayElevationEnable() ? ScreenUtils.dip2px(5,this) : 0f);
+            }
+        }catch (Exception e){
+            Log.e(e.toString());
+        }
     }
 
     @Nullable
@@ -46,6 +83,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         return this;
     }
 
+    /**
+     * default preferences
+     * */
     protected SharedPreferences getPreferences() {
         return BookApplication.getInstance().getPreferences();
     }

@@ -5,4 +5,6 @@
     <color name="colorAccent">@color/theme_color</color>
 
     <color name="theme_color">#a1ccd3</color>
+    <color name="action_text_color">@android:color/white</color>
+    <color name="action_pop_text_color">@android:color/black</color>
 </resources>

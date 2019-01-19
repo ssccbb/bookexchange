@@ -35,7 +35,6 @@ public class SplashActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        AppManager.getAppManager().addActivity(this);
         mUIHandler.postDelayed(mSkipRunnable,Constants.CONFIG_SPLASH_SKIP_TIME);
         checkPermission();
         skipTimerStart();
@@ -113,7 +112,5 @@ public class SplashActivity extends BaseActivity {
             mUIHandler.removeCallbacksAndMessages(null);
             mUIHandler = null;
         }
-        AppManager.getAppManager().finishActivity(SplashActivity.class);
-        System.gc();
     }
 }

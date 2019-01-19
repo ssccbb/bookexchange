@@ -10,12 +10,16 @@ import com.google.gson.Gson;
 import com.sung.bookexchange.R;
 import com.sung.bookexchange.api.RetrofitClient;
 import com.sung.bookexchange.common.Constants;
+import com.sung.bookexchange.common.ToolbarConfig;
 import com.sung.bookexchange.model.BookInfo;
 import com.sung.bookexchange.utils.AppManager;
 import com.sung.bookexchange.utils.Log;
+import com.sung.bookexchange.view.FlowLayout;
+import com.sung.bookexchange.view.TagView;
 
 import java.io.IOException;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -30,20 +34,27 @@ public class IndexActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index);
-        AppManager.getAppManager().addActivity(this);
+    }
 
-        get();
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        ToolbarConfig config = new ToolbarConfig.Builder()
+//                .setDisplayBackAsUpEnable(false)
+//                .setDisplayCenterTitleEnable(true)
+//                .setDisplayLogoEnable(false)
+//                .setDisplaySubTitleEnable(false)
+//                .setDisplayTitleEnable(false)
+//                .setDisplayElevationEnable(true)
+//                .setColorBackground(R.color.theme_color)
+//                .setTextTitle("主页")
+//                .creat();
+//        acceptToolbarConfig(config);
     }
 
     public static void open(Activity context) {
         if (context == null) return;
         context.startActivity(new Intent(context, IndexActivity.class));
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        AppManager.getAppManager().finishActivity(IndexActivity.class);
     }
 
     @Override
@@ -100,8 +111,4 @@ public class IndexActivity extends BaseActivity {
                 });
     }
 
-    @OnClick(R.id.go)
-    public void onClick(){
-        get();
-    }
 }

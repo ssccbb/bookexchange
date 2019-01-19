@@ -1,7 +1,15 @@
 package com.sung.bookexchange.utils;
 
+import android.os.Environment;
+
+import com.sung.bookexchange.BookApplication;
 import com.sung.bookexchange.BuildConfig;
 import com.sung.bookexchange.common.Constants;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Create by sung at 2018/11/13
@@ -9,7 +17,15 @@ import com.sung.bookexchange.common.Constants;
  * @Description: log工具
  */
 public class Log {
-    private static boolean intercept = (!BuildConfig.DEBUG);
+    /**
+     * 日志开关
+    * */
+    private static boolean LOG_INTERCEPT = (!BuildConfig.DEBUG);
+    /**
+     * 记录交互
+     * */
+    private static boolean SAVE_USER_OPERATION = true;
+    private static DateFormat dateFormat;
 
     /**
      * logd
@@ -17,7 +33,7 @@ public class Log {
      * @param strings 数值>1 首位tag 其余content
      */
     public static void d(String... strings) {
-        if (intercept || strings.length <= 0) {
+        if (isIntercept() || strings.length <= 0) {
             return;
         }
         try {
@@ -32,7 +48,7 @@ public class Log {
      * @param strings 数值>1 首位tag 其余content
      */
     public static void v(String... strings) {
-        if (intercept || strings.length <= 0) {
+        if (isIntercept() || strings.length <= 0) {
             return;
         }
         try {
@@ -47,7 +63,7 @@ public class Log {
      * @param strings 数值>1 首位tag 其余content
      */
     public static void e(String... strings) {
-        if (intercept || strings.length <= 0) {
+        if (isIntercept() || strings.length <= 0) {
             return;
         }
         try {
@@ -62,7 +78,7 @@ public class Log {
      * @param strings 数值>1 首位tag 其余content
      */
     public static void i(String... strings) {
-        if (intercept || strings.length <= 0) {
+        if (isIntercept() || strings.length <= 0) {
             return;
         }
         try {
@@ -71,8 +87,8 @@ public class Log {
         }
     }
 
-    public static boolean getLogOpenStatus() {
-        return intercept;
+    public static boolean isIntercept() {
+        return LOG_INTERCEPT;
     }
 
     private static String readContent(String... strings) {
@@ -92,5 +108,31 @@ public class Log {
             content = sb.toString();
         }
         return content;
+    }
+
+    /**
+     * @date: 2018/12/6_5:04 PM
+     * @Description: 日志记录
+     */
+    public static void saveOperationIntoLocal(String content){
+        if (!SAVE_USER_OPERATION) return;
+        try {
+            if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                return;
+            }
+            if (!FileUtils.isFileExists(BookApplication.getInstance().getLogPath())) {
+                FileUtils.createFileByDeleteOldFile(BookApplication.getInstance().getLogPath());
+            }
+            content = "\r\n" + millis2String(System.currentTimeMillis()) + " : " + content + "\r\n";
+            FileUtils.writeFileFromString(BookApplication.getInstance().getLogPath(), content, true);
+        }catch (Exception e){
+        }
+    }
+
+    private static String millis2String(long millis){
+        if (dateFormat == null) {
+            dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        }
+        return dateFormat.format(new Date(millis));
     }
 }

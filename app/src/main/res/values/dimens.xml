@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--dp-->
     <dimen name="dp_5">5dp</dimen>
     <dimen name="dp_10">10dp</dimen>
     <dimen name="dp_15">15dp</dimen>
@@ -8,13 +9,16 @@
     <dimen name="dp_25">25dp</dimen>
     <dimen name="dp_30">30dp</dimen>
     <dimen name="dp_35">35dp</dimen>
-
     <dimen name="divider">1dp</dimen>
-    
-    
+    <dimen name="actionBarSize">50dp</dimen>
+
+
+    <!--sp-->
     <dimen name="text_small">12sp</dimen>
     <dimen name="text_normal">14sp</dimen>
     <dimen name="text_large">18sp</dimen>
     <dimen name="text_xlarge">20sp</dimen>
-    <dimen name="text_xxlarge">25sp</dimen>
+    <dimen name="text_xxlarge">22sp</dimen>
+    <dimen name="text_xxxlarge">25sp</dimen>
+    <dimen name="actionBarTextSize">@dimen/text_xxlarge</dimen>
 </resources>
