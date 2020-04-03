@@ -1,4 +1,4 @@
-package com.sung.bookexchange.ui.activity;
+package com.sung.bookexchange.mvp.ui.activity;
 
 import android.Manifest;
 import android.os.Handler;
@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.sung.bookexchange.R;
 import com.sung.bookexchange.common.Constants;
-import com.sung.bookexchange.utils.AppManager;
 import com.sung.bookexchange.utils.PermissionsHelper;
 
 import java.util.Stack;

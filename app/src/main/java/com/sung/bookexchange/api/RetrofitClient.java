@@ -16,15 +16,12 @@
 package com.sung.bookexchange.api;
 
 import android.content.Context;
+
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import me.jessyan.retrofiturlmanager.BaseInterceptor;
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
@@ -35,6 +32,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+
 import static com.sung.bookexchange.api.Api.APP_DEFAULT_DOMAIN;
 import static com.sung.bookexchange.api.Api.APP_DOUBAN_DOMAIN;
 import static com.sung.bookexchange.api.Api.DOUBAN_DOMAIN_NAME;
@@ -63,25 +61,26 @@ public class RetrofitClient {
     }
 
     public static final RetrofitClient getInstance(Context context) {
-        if (context != null){
+        if (context != null) {
             mContext = context;
         }
         return NetWorkManagerHolder.INSTANCE;
     }
 
-    public static final RetrofitClient getInstance(Context context,Map<String, String> headers) {
-        if (context != null){
+    public static final RetrofitClient getInstance(Context context, Map<String, String> headers) {
+        if (context != null) {
             mContext = context;
         }
-        return new RetrofitClient(mContext,headers);
+        return new RetrofitClient(mContext, headers);
     }
 
     private RetrofitClient(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     private RetrofitClient(Context context, Map<String, String> headers) {
-        this.mOkHttpClient = RetrofitUrlManager.getInstance().with(new OkHttpClient.Builder()) //RetrofitUrlManager 初始化
+        //RetrofitUrlManager 初始化
+        this.mOkHttpClient = RetrofitUrlManager.getInstance().with(new OkHttpClient.Builder())
                 .addNetworkInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .addInterceptor(new BaseInterceptor(headers))
                 .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
@@ -92,8 +91,10 @@ public class RetrofitClient {
 
         this.mRetrofit = new Retrofit.Builder()
                 .baseUrl(APP_DEFAULT_DOMAIN)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//使用rxjava
-                .addConverterFactory(GsonConverterFactory.create())//使用Gson
+                //使用rxjava
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                //使用Gson
+                .addConverterFactory(GsonConverterFactory.create())
                 .client(mOkHttpClient)
                 .build();
 
@@ -102,34 +103,24 @@ public class RetrofitClient {
 
     /**
      * 检查当前baseurl
-     * */
-    public RetrofitClient checkDoMainUrl(String domain_url, String domain_name){
+     */
+    public RetrofitClient checkDoMainUrl(String domain_url, String domain_name) {
         HttpUrl httpUrl = RetrofitUrlManager.getInstance().fetchDomain(domain_name);
-        if (httpUrl == null || !httpUrl.toString().equals(domain_url)) { //可以在 App 运行时随意切换某个接口的 BaseUrl
+        //可以在 App 运行时随意切换某个接口的 BaseUrl
+        if (httpUrl == null || !httpUrl.toString().equals(domain_url)) {
             RetrofitUrlManager.getInstance().putDomain(domain_name, domain_url);
         }
         return this;
     }
 
     public static <T> ObservableTransformer<T, T> getDefaultTransformer() {
-        return new ObservableTransformer<T, T>() {
-            @Override
-            public ObservableSource<T> apply(Observable<T> upstream) {
-                return upstream.subscribeOn(Schedulers.io())
-                        .doOnSubscribe(new Consumer<Disposable>() {
-                            @Override
-                            public void accept(Disposable disposable) throws Exception {
-                            }
-                        })
-                        .subscribeOn(AndroidSchedulers.mainThread())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .doAfterTerminate(new Action() {
-                            @Override
-                            public void run() throws Exception {
-                            }
-                        });
-            }
-        };
+        return upstream -> upstream.subscribeOn(Schedulers.io())
+                .doOnSubscribe(disposable -> {
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate((Action) () -> {
+                });
     }
 
     public OkHttpClient getOkHttpClient() {
@@ -145,9 +136,9 @@ public class RetrofitClient {
      * 获取api
      *
      * @description 有多个baseurl时请补充get方法
-     * */
+     */
     public ApiService getApiService() {
-        checkDoMainUrl(APP_DOUBAN_DOMAIN,DOUBAN_DOMAIN_NAME);
+        checkDoMainUrl(APP_DOUBAN_DOMAIN, DOUBAN_DOMAIN_NAME);
         return mOneApiService;
     }
 }

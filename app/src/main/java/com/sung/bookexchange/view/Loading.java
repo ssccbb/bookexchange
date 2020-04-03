@@ -11,7 +11,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
+
 import com.sung.bookexchange.R;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -121,7 +123,7 @@ public class Loading extends View {
             mUiHandler.sendEmptyMessage(0);
         }
     };
-    private Handler mUiHandler = new Handler(){
+    private Handler mUiHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             invalidate();

@@ -71,26 +71,22 @@ public class PermissionsHelper {
     }
 
 
-    // 显示缺失权限提示
+    /**
+     * 显示缺失权限提示
+     */
     private void showMissingPermissionDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         final AlertDialog alertDialog = builder.create();
         builder.setMessage("当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。\n\n最后点击两次后退按钮，即可返回。");
         // 拒绝, 退出应用
-        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-            @Override public void onClick(DialogInterface dialog, int which) {
-                alertDialog.dismiss();
-            }
-        });
-        builder.setPositiveButton("设置", new DialogInterface.OnClickListener() {
-            @Override public void onClick(DialogInterface dialog, int which) {
-                startAppSettings();
-            }
-        });
+        builder.setNegativeButton("取消", (dialog, which) -> alertDialog.dismiss());
+        builder.setPositiveButton("设置", (dialog, which) -> startAppSettings());
         builder.show();
     }
 
-    // 启动应用的设置
+    /**
+     * 启动应用的设置
+     * */
     public void startAppSettings() {
         Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
         intent.setData(Uri.parse( PACKAGE + mContext.getPackageName()));

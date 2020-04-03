@@ -98,7 +98,7 @@
 # Gson specific classes
 -keep class sun.misc.Unsafe { *; }
 # Application classes that will be serialized/deserialized over Gson
--keep class com.sung.bookexchange.model.** { *; }
+-keep class com.sung.bookexchange.mvp.model.** { *; }
 -keep class com.sung.bookexchange.view.** { *; }
 
 ##---------------End: proguard configuration for Gson  ---------- #

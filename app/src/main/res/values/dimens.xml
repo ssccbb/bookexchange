@@ -12,6 +12,8 @@
     <dimen name="divider">1dp</dimen>
     <dimen name="actionBarSize">50dp</dimen>
 
+    <dimen name="index_icon_height">45dp
+    </dimen>
 
     <!--sp-->
     <dimen name="text_small">12sp</dimen>
@@ -21,4 +23,5 @@
     <dimen name="text_xxlarge">22sp</dimen>
     <dimen name="text_xxxlarge">25sp</dimen>
     <dimen name="actionBarTextSize">@dimen/text_xxlarge</dimen>
+
 </resources>

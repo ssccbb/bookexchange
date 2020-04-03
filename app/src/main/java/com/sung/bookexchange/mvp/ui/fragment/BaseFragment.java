@@ -1,4 +1,4 @@
-package com.sung.bookexchange.ui.fragment;
+package com.sung.bookexchange.mvp.ui.fragment;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;

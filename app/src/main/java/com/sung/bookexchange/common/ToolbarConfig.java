@@ -18,6 +18,8 @@ public class ToolbarConfig {
     private String textSubTitle;
     private @ColorInt
     int colorBackground = -99;
+    private @ColorInt
+    int colorText = -99;
     private int resLogo = -99;
 
     public boolean isDisplayBackAsUpEnable() {
@@ -58,6 +60,10 @@ public class ToolbarConfig {
 
     public int getResLogo() {
         return resLogo;
+    }
+
+    public int getColorText() {
+        return colorText;
     }
 
     public static class Builder {
@@ -105,6 +111,11 @@ public class ToolbarConfig {
 
         public Builder setColorBackground(int colorBackground) {
             config.colorBackground = colorBackground;
+            return this;
+        }
+
+        public Builder setColorText(int colorText) {
+            config.colorText = colorText;
             return this;
         }
 

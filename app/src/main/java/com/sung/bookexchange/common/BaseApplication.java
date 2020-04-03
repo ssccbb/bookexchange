@@ -8,7 +8,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.TextView;
 
 import com.sung.bookexchange.R;
@@ -30,13 +29,13 @@ public class BaseApplication extends Application implements Application.Activity
         try {
             registerActivityLifecycleCallbacks(this);
             context = getApplicationContext();
-        }catch (Exception e){
+        } catch (Exception e) {
         }
     }
 
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-        Log.saveOperationIntoLocal(activity+" --> onActivityCreated");
+        Log.saveOperationIntoLocal(activity + " --> onActivityCreated");
         if (activity instanceof AppCompatActivity) {
             AppManager.getAppManager().addActivity((AppCompatActivity) activity);
         }
@@ -53,20 +52,15 @@ public class BaseApplication extends Application implements Application.Activity
                 compatActivity.setSupportActionBar(toolbar);
                 compatActivity.getSupportActionBar().setDisplayShowTitleEnabled(true);
                 compatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        activity.finish();
-                    }
-                });
+                toolbar.setNavigationOnClickListener(v -> activity.finish());
             } else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    activity.setActionBar((android.widget.Toolbar) activity.findViewById(R.id.tool_bar));
+                    activity.setActionBar(activity.findViewById(R.id.tool_bar));
                     activity.getActionBar().setDisplayShowTitleEnabled(false);
                 }
             }
         }
-        if (activity.findViewById(R.id.tv_title) != null){
+        if (activity.findViewById(R.id.tv_title) != null) {
             TextView centerTitle = activity.findViewById(R.id.tv_title);
             centerTitle.setText(activity.getTitle());
         }
@@ -74,7 +68,7 @@ public class BaseApplication extends Application implements Application.Activity
 
     /**
      * life cycle callback
-     * */
+     */
     @Override
     public void onActivityResumed(Activity activity) {
 //        Log.saveOperationIntoLocal(activity+" --> onActivityResumed");
@@ -82,7 +76,7 @@ public class BaseApplication extends Application implements Application.Activity
 
     @Override
     public void onActivityPaused(Activity activity) {
-        Log.saveOperationIntoLocal(activity+" --> onActivityPaused");
+        Log.saveOperationIntoLocal(activity + " --> onActivityPaused");
     }
 
     @Override
@@ -97,7 +91,7 @@ public class BaseApplication extends Application implements Application.Activity
 
     @Override
     public void onActivityDestroyed(Activity activity) {
-        Log.saveOperationIntoLocal(activity+" --> onActivityDestroyed");
+        Log.saveOperationIntoLocal(activity + " --> onActivityDestroyed");
         if (activity instanceof AppCompatActivity) {
             AppManager.getAppManager().finishActivity((AppCompatActivity) activity);
         }
@@ -106,31 +100,31 @@ public class BaseApplication extends Application implements Application.Activity
 
     /**
      * @return 日志默认存储路径
-     * */
-    public String getLogPath(){
-        return getExternalCacheDir()+"/app.log";
+     */
+    public String getLogPath() {
+        return getExternalCacheDir() + "/app.log";
     }
 
     /**
      * @return context
-     * */
-    public Context getContext(){
+     */
+    public Context getContext() {
         return context;
     }
 
     /**
      * @return packagename
-     * */
-    public String getAppPackageName(){
+     */
+    public String getAppPackageName() {
         return getPackageName();
     }
 
     /**
      * @return sp
-     * */
-    public SharedPreferences getPreferences(){
-        if (mPreferences == null){
-            mPreferences = getSharedPreferences(getAppPackageName(),MODE_PRIVATE);
+     */
+    public SharedPreferences getPreferences() {
+        if (mPreferences == null) {
+            mPreferences = getSharedPreferences(getAppPackageName(), MODE_PRIVATE);
         }
         return mPreferences;
     }

@@ -10,8 +10,6 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 
-import com.sung.bookexchange.ui.activity.BaseActivity;
-
 import java.util.Stack;
 
 /**

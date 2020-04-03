@@ -1,4 +1,4 @@
-package com.sung.bookexchange.ui.activity;
+package com.sung.bookexchange.mvp.ui.activity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.sung.bookexchange.BookApplication;
 import com.sung.bookexchange.R;
 import com.sung.bookexchange.common.ToolbarConfig;
-import com.sung.bookexchange.ui.fragment.BaseFragment;
+import com.sung.bookexchange.mvp.ui.fragment.BaseFragment;
 import com.sung.bookexchange.utils.Log;
 import com.sung.bookexchange.utils.ScreenUtils;
 
@@ -29,6 +29,22 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
         ButterKnife.bind(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        ToolbarConfig config = new ToolbarConfig.Builder()
+//                .setDisplayBackAsUpEnable(false)
+//                .setDisplayCenterTitleEnable(true)
+//                .setDisplayLogoEnable(false)
+//                .setDisplaySubTitleEnable(false)
+//                .setDisplayTitleEnable(false)
+//                .setDisplayElevationEnable(true)
+//                .setColorBackground(R.color.theme_color)
+//                .setTextTitle("主页")
+//                .creat();
+//        acceptToolbarConfig(config);
     }
 
     /**
@@ -54,6 +70,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                     TextView centerTitle = this.findViewById(R.id.tv_title);
                     centerTitle.setVisibility(View.VISIBLE);
                     centerTitle.setText(config.getTextTitle());
+                    centerTitle.setTextSize(20);
+                    if (config.getColorText() != -99) {
+                        centerTitle.setTextColor(config.getColorText());
+                    }
                 }
             }
             if (config.getColorBackground() != -99) {

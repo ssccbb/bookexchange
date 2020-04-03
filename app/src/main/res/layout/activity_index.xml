@@ -3,6 +3,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.IndexActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="1dp"
+    tools:context=".mvp.ui.activity.IndexActivity">
 
+    <include
+        layout="@layout/layout_tool_bar"/>
+
+    <LinearLayout
+        android:id="@+id/ll_tab"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@color/app_background_light"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/index_icon_height"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <ImageView
+            android:id="@+id/iv_main"
+            android:src="@drawable/ic_card"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:padding="3dp"
+            android:background="?selectableItemBackground"/>
+        <ImageView
+            android:id="@+id/iv_table"
+            android:src="@drawable/ic_card"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:padding="3dp"
+            android:background="?selectableItemBackground"/>
+        <ImageView
+            android:id="@+id/iv_me"
+            android:src="@drawable/ic_card"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:padding="3dp"
+            android:background="?selectableItemBackground"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/app_line_light"
+        app:layout_constraintTop_toTopOf="@+id/ll_tab"/>
 </android.support.constraint.ConstraintLayout>

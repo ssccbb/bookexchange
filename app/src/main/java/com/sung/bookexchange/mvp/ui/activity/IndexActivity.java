@@ -1,6 +1,7 @@
-package com.sung.bookexchange.ui.activity;
+package com.sung.bookexchange.mvp.ui.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,24 +12,26 @@ import com.sung.bookexchange.R;
 import com.sung.bookexchange.api.RetrofitClient;
 import com.sung.bookexchange.common.Constants;
 import com.sung.bookexchange.common.ToolbarConfig;
-import com.sung.bookexchange.model.BookInfo;
+import com.sung.bookexchange.mvp.contract.IndexContract;
 import com.sung.bookexchange.utils.AppManager;
 import com.sung.bookexchange.utils.Log;
-import com.sung.bookexchange.view.FlowLayout;
-import com.sung.bookexchange.view.TagView;
+import com.sung.bookexchange.mvp.interfaces.IVIndex;
 
 import java.io.IOException;
 
-import butterknife.BindView;
-import butterknife.OnClick;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import okhttp3.ResponseBody;
+
 import static me.jessyan.retrofiturlmanager.Utils.NET_TAG;
 
-public class IndexActivity extends BaseActivity {
+public class IndexActivity extends BaseActivity implements IVIndex {
     private boolean ABLE_EXIT_APP = false;
     private Handler mDoubleClickHandler = new Handler();
+
+    private IndexContract mContract;
+
+    // ----------------   life cycle  ------------------
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,22 +42,18 @@ public class IndexActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-//        ToolbarConfig config = new ToolbarConfig.Builder()
-//                .setDisplayBackAsUpEnable(false)
-//                .setDisplayCenterTitleEnable(true)
-//                .setDisplayLogoEnable(false)
-//                .setDisplaySubTitleEnable(false)
-//                .setDisplayTitleEnable(false)
-//                .setDisplayElevationEnable(true)
-//                .setColorBackground(R.color.theme_color)
-//                .setTextTitle("主页")
-//                .creat();
-//        acceptToolbarConfig(config);
-    }
-
-    public static void open(Activity context) {
-        if (context == null) return;
-        context.startActivity(new Intent(context, IndexActivity.class));
+        ToolbarConfig config = new ToolbarConfig.Builder()
+                .setDisplayBackAsUpEnable(false)
+                .setDisplayCenterTitleEnable(true)
+                .setDisplayLogoEnable(false)
+                .setDisplaySubTitleEnable(false)
+                .setDisplayTitleEnable(false)
+                .setDisplayElevationEnable(true)
+                .setColorBackground(R.color.theme_color)
+                .setColorText(R.color.app_text_dark)
+                .setTextTitle("主页")
+                .creat();
+        acceptToolbarConfig(config);
     }
 
     @Override
@@ -77,6 +76,23 @@ public class IndexActivity extends BaseActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    // ----------------   view implement ------------------
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    // ----------------   public method  ------------------
+
+    public static void open(Activity context) {
+        if (context == null) return;
+        context.startActivity(new Intent(context, IndexActivity.class));
+    }
+
+    /**
+     * 通过isbn号查询书籍信息（豆瓣接口）
+     */
     private void get() {
         RetrofitClient.getInstance(this)
                 .getApiService()
@@ -85,30 +101,28 @@ public class IndexActivity extends BaseActivity {
                 .subscribe(new Observer<ResponseBody>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        Log.e(NET_TAG, "request subscribe! " );
+                        Log.e(NET_TAG, "request subscribe! ");
                     }
 
                     @Override
                     public void onNext(ResponseBody response) {
                         try {
-                            Log.e(NET_TAG, "request successful --> "+response.string());
+                            Log.e(NET_TAG, "request successful --> " + response.string());
                             Gson gson = new Gson();
-                            BookInfo book = gson.fromJson(response.string(),BookInfo.class);
-                        }catch (IOException e){
+                        } catch (IOException e) {
                         }
                     }
 
                     @Override
                     public void onError(Throwable throwable) {
                         throwable.printStackTrace();
-                        Log.e(NET_TAG, "request error --> "+throwable.getMessage() );
+                        Log.e(NET_TAG, "request error --> " + throwable.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
-                        Log.e(NET_TAG, "request complete! " );
+                        Log.e(NET_TAG, "request complete! ");
                     }
                 });
     }
-
 }
