@@ -1,4 +1,4 @@
-package com.sung.common;
+package com.sung.common.manager;
 
 /**
  * Create by sung at 2020-04-03

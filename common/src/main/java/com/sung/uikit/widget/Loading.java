@@ -1,4 +1,4 @@
-package com.sung.bookexchange.view;
+package com.sung.uikit.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -12,7 +12,7 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.sung.bookexchange.R;
+import com.sung.common.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

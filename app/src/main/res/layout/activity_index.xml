@@ -20,7 +20,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
         <ImageView
             android:id="@+id/iv_main"
-            android:src="@drawable/ic_card"
+            android:src="@mipmap/ic_card"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
@@ -28,7 +28,7 @@
             android:background="?selectableItemBackground"/>
         <ImageView
             android:id="@+id/iv_table"
-            android:src="@drawable/ic_card"
+            android:src="@mipmap/ic_card"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
@@ -36,7 +36,7 @@
             android:background="?selectableItemBackground"/>
         <ImageView
             android:id="@+id/iv_me"
-            android:src="@drawable/ic_card"
+            android:src="@mipmap/ic_card"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
