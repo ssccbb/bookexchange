@@ -5,7 +5,7 @@ allprojects {
         jcenter()
     }
     tasks.withType(Javadoc) {
-        options{
+        options {
             encoding "UTF-8"
             charSet 'UTF-8'
             links "http://docs.oracle.com/javase/7/docs/api"
@@ -18,10 +18,14 @@ allprojects {
 def siteUrl = 'https://github.com/JessYanCoding/RetrofitUrlManager'   // 项目的主页
 
 publish {
-    userOrg = 'jessyancoding'      //bintray注册的用户名
-    groupId = 'me.jessyan'         //compile引用时的第1部分groupId
-    artifactId = 'retrofit-url-manager'     //compile引用时的第2部分项目名
-    publishVersion = rootProject.versionName    //compile引用时的第3部分版本号
+    //bintray注册的用户名
+    userOrg = 'jessyancoding'
+    //compile引用时的第1部分groupId
+    groupId = 'me.jessyan'
+    //compile引用时的第2部分项目名
+    artifactId = 'retrofit-url-manager'
+    //compile引用时的第3部分版本号
+    publishVersion = rootProject.versionName
     desc = 'Let Retrofit support multiple baseUrl and can be change the baseUrl at runtime.'
     website = siteUrl
 }

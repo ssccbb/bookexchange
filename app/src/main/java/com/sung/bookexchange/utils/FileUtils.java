@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
 /**
  * <pre>
  *     author: Blankj
@@ -1160,8 +1159,8 @@ public class FileUtils {
     public static Uri getImageContentUri(Context context, File imageFile) {
         String filePath = imageFile.getAbsolutePath();
         Cursor cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                new String[] { MediaStore.Images.Media._ID }, MediaStore.Images.Media.DATA + "=? ",
-                new String[] { filePath }, null);
+                new String[]{MediaStore.Images.Media._ID}, MediaStore.Images.Media.DATA + "=? ",
+                new String[]{filePath}, null);
         if (cursor != null && cursor.moveToFirst()) {
             int id = cursor.getInt(cursor.getColumnIndex(MediaStore.MediaColumns._ID));
             Uri baseUri = Uri.parse("content://media/external/images/media");
@@ -1179,8 +1178,9 @@ public class FileUtils {
 
     /**
      * Gets the corresponding path to a file from the given content:// URI
+     *
      * @param selectedVideoUri The content:// URI to find the file path from
-     * @param contentResolver The content resolver to use to perform the query.
+     * @param contentResolver  The content resolver to use to perform the query.
      * @return the file path as a string
      */
     public static String getFilePathFromContentUri(Uri selectedVideoUri,

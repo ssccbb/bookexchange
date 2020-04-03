@@ -10,12 +10,13 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.view.Surface;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import androidx.annotation.NonNull;
 
 /**
  * <pre>
@@ -64,12 +65,12 @@ public final class ScreenUtils {
 
     /**
      * 隐藏虚拟按键
-     * */
-    public static void hideNavigation(Activity activity){
+     */
+    public static void hideNavigation(Activity activity) {
         activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
     }
 
-    public static void setDarkNavigation(Activity activity){
+    public static void setDarkNavigation(Activity activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity.getWindow().setNavigationBarColor(Color.BLACK);
         }
@@ -188,7 +189,7 @@ public final class ScreenUtils {
      *
      * @param duration 时长
      */
-    public static void setSleepDuration(Context context,final int duration) {
+    public static void setSleepDuration(Context context, final int duration) {
         Settings.System.putInt(context.getContentResolver(), Settings.System.SCREEN_OFF_TIMEOUT, duration);
     }
 
@@ -225,7 +226,7 @@ public final class ScreenUtils {
      * @return
      */
     public static float px2dip(float pxValue, float scale) {
-        return  (pxValue / scale + 0.5f);
+        return (pxValue / scale + 0.5f);
     }
 
     /**
@@ -235,9 +236,9 @@ public final class ScreenUtils {
      * @param context
      * @return
      */
-    public static float px2dip(float pxValue,Context context) {
+    public static float px2dip(float pxValue, Context context) {
         float scale = context.getResources().getDisplayMetrics().density;
-        return  px2dip( pxValue,  scale);
+        return px2dip(pxValue, scale);
     }
 
     /**
@@ -248,7 +249,7 @@ public final class ScreenUtils {
      * @return
      */
     public static float dip2px(float dipValue, float scale) {
-        return  (dipValue * scale + 0.5f);
+        return (dipValue * scale + 0.5f);
     }
 
     /**
@@ -271,7 +272,7 @@ public final class ScreenUtils {
      * @return
      */
     public static float px2sp(float pxValue, float fontScale) {
-        return  (pxValue / fontScale + 0.5f);
+        return (pxValue / fontScale + 0.5f);
     }
 
     /**
@@ -282,17 +283,18 @@ public final class ScreenUtils {
      * @return
      */
     public static float sp2px(float spValue, float fontScale) {
-        return  (spValue * fontScale + 0.5f);
+        return (spValue * fontScale + 0.5f);
     }
+
     /**
      * 将sp值转换为px值，保证文字大小不变
      *
      * @param spValue
-     * @param Context
+     * @param context
      * @return
      */
-    public static float sp2px(float spValue,Context context) {
+    public static float sp2px(float spValue, Context context) {
         float scale = context.getResources().getDisplayMetrics().density;
-        return  sp2px( spValue,  scale);
+        return sp2px(spValue, scale);
     }
 }

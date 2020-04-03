@@ -3,6 +3,7 @@ package com.sung.bookexchange.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -40,11 +41,11 @@ public class DropSimpleDraweeView extends SimpleDraweeView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 down_x = event.getX();
                 down_y = event.getY();
-                if (default_x == -1 || default_y == -1){
+                if (default_x == -1 || default_y == -1) {
                     default_x = getX();
                     default_y = getY();
                 }

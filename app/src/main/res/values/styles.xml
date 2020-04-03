@@ -24,18 +24,18 @@
     <!--ToolBar-->
     <style name="BookTheme.ToolBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <!--toolbar字体颜色（同时会改变menu三点和返回按键颜色）-->
-        <item name="android:textColorPrimary">@color/action_text_color</item>
+        <item name="android:textColorPrimary">@color/app_text_light</item>
         <item name="android:background">@color/theme_color</item>
     </style>
     <style name="BookTheme.ToolBar.PopupMenu" parent="Theme.AppCompat.Light.NoActionBar">
         <!--文字的颜色-->
-        <item name="android:textColor">@color/action_pop_text_color</item>
+        <item name="android:textColor">@color/app_pop_text_light</item>
         <!--不覆盖toolbar-->
         <item name="overlapAnchor">false</item>
     </style>
     <style name="BookTheme.ToolBar.Title" parent="BookTheme.ToolBar">
         <item name="android:textSize">@dimen/actionBarTextSize</item>
-        <item name="android:textColor">@color/action_text_color</item>
+        <item name="android:textColor">@color/app_text_light</item>
         <item name="android:textStyle">normal</item>
     </style>
 </resources>

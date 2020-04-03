@@ -1,4 +1,4 @@
-package com.sung.bookexchange.common;
+package com.sung.common;
 
 /**
  * @author: sung

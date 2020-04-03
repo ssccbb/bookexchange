@@ -63,7 +63,7 @@
 
 -keep class **.R$* { *; }
 -keep class com.sung.bookexchange.common.** { *; }
--keep class com.sung.bookexchange.eventbus.** { *; }
+-keep class com.sung.common.eventbus.** { *; }
 
 # Explicitly preserve all serialization members. The Serializable interface
 # is only a marker interface, so it wouldn't save them.
@@ -98,7 +98,9 @@
 # Gson specific classes
 -keep class sun.misc.Unsafe { *; }
 # Application classes that will be serialized/deserialized over Gson
--keep class com.sung.bookexchange.model.** { *; }
+-keep class com.sung.common.model.** { *; }
+-keep class com.sung.common.bean.request.** { *; }
+-keep class com.sung.common.bean.response.** { *; }
 -keep class com.sung.bookexchange.view.** { *; }
 
 ##---------------End: proguard configuration for Gson  ---------- #

@@ -1,4 +1,4 @@
-package com.sung.bookexchange.eventbus;
+package com.sung.common.eventbus;
 
 /**
  * Create by sung at 2018/11/13

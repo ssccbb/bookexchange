@@ -188,7 +188,7 @@ public final class StringUtils {
         return new String(chars);
     }
 
-    public static String emptyConvert(String string){
+    public static String emptyConvert(String string) {
         return string == null ? "" : string;
     }
 }

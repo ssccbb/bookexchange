@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.activity.SplashActivity"
+    tools:context=".mvp.ui.activity.SplashActivity"
     android:background="@color/theme_color">
 
     <TextView
@@ -33,7 +33,7 @@
         android:id="@+id/ll_containerr"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="@dimen/dp_120"
         android:background="@android:color/white">
         <RelativeLayout
             android:layout_centerInParent="true"
@@ -42,8 +42,8 @@
             <ImageView
                 android:id="@+id/iv_logo"
                 android:src="@mipmap/ic_launcher"
-                android:layout_width="60dp"
-                android:layout_height="60dp" />
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60" />
             <TextView
                 android:id="@+id/tv_name"
                 tools:text="@string/app_name"
@@ -66,4 +66,4 @@
         </RelativeLayout>
     </RelativeLayout>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

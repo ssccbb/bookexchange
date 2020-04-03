@@ -1,15 +1,16 @@
-package com.sung.bookexchange.ui.activity;
+package com.sung.bookexchange.mvp.ui.activity;
 
 import android.Manifest;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.sung.bookexchange.R;
-import com.sung.bookexchange.common.Constants;
-import com.sung.bookexchange.utils.AppManager;
+import com.sung.common.Constants;
 import com.sung.bookexchange.utils.PermissionsHelper;
 
 import java.util.Stack;
@@ -35,13 +36,13 @@ public class SplashActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        mUIHandler.postDelayed(mSkipRunnable,Constants.CONFIG_SPLASH_SKIP_TIME);
+        mUIHandler.postDelayed(mSkipRunnable, Constants.CONFIG_SPLASH_SKIP_TIME);
         checkPermission();
         skipTimerStart();
     }
 
-    private void checkPermission(){
-        if (mPermissions == null){
+    private void checkPermission() {
+        if (mPermissions == null) {
             mPermissions = new Stack<>();
         }
         mPermissions.push(Manifest.permission.READ_EXTERNAL_STORAGE);
@@ -51,22 +52,22 @@ public class SplashActivity extends BaseActivity {
         boolean done = mPermissionsHelper.checkPermissions(
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.INTERNET);
-        if (!done){
+        if (!done) {
             mUIHandler.removeCallbacksAndMessages(null);
-            mPermissionsHelper.permissionsCheck(mPermissions.peek(),100);
+            mPermissionsHelper.permissionsCheck(mPermissions.peek(), 100);
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 100){
+        if (requestCode == 100) {
             if (!mPermissions.isEmpty()) {
                 mPermissions.pop();
             }
-            if (!mPermissions.isEmpty()){
-                mPermissionsHelper.permissionsCheck(mPermissions.peek(),100);
-            }else {
+            if (!mPermissions.isEmpty()) {
+                mPermissionsHelper.permissionsCheck(mPermissions.peek(), 100);
+            } else {
                 mUIHandler.postDelayed(mSkipRunnable, Constants.CONFIG_SPLASH_SKIP_TIME);
                 skipTimerStart();
             }
@@ -74,12 +75,12 @@ public class SplashActivity extends BaseActivity {
     }
 
     @OnClick(R.id.tv_skip)
-    public void intercept(){
+    public void intercept() {
         mUIHandler.removeCallbacksAndMessages(null);
         goTo();
     }
 
-    private void skipTimerStart(){
+    private void skipTimerStart() {
         arg = Constants.CONFIG_SPLASH_SKIP_TIME / 1000;
         Timer skip = new Timer();
         skip.scheduleAtFixedRate(new TimerTask() {
@@ -90,17 +91,17 @@ public class SplashActivity extends BaseActivity {
                     if (arg <= 0) {
                         skip.cancel();
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
                 }
             }
-        },0,1000);
+        }, 0, 1000);
     }
 
-    private void invalidate(){
-        mSkip.setText("跳过("+(arg <= 0 ? 0 : arg--)+")");
+    private void invalidate() {
+        mSkip.setText("跳过(" + (arg <= 0 ? 0 : arg--) + ")");
     }
 
-    private void goTo(){
+    private void goTo() {
         IndexActivity.open(this);
         this.finish();
     }
@@ -108,7 +109,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mUIHandler != null){
+        if (mUIHandler != null) {
             mUIHandler.removeCallbacksAndMessages(null);
             mUIHandler = null;
         }
