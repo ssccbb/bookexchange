@@ -10,12 +10,13 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.view.Surface;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import androidx.annotation.NonNull;
 
 /**
  * <pre>
@@ -289,7 +290,7 @@ public final class ScreenUtils {
      * 将sp值转换为px值，保证文字大小不变
      *
      * @param spValue
-     * @param Context
+     * @param context
      * @return
      */
     public static float sp2px(float spValue, Context context) {

@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.util.LayoutDirection;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.text.TextUtilsCompat;
 
 import com.sung.bookexchange.R;
 
@@ -14,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+
+import androidx.core.text.TextUtilsCompat;
 
 /**
  * Create by sung at 2018/12/4
@@ -104,9 +105,8 @@ public class FlowLayout extends ViewGroup {
             }
         }
         setMeasuredDimension(
-                //
                 modeWidth == MeasureSpec.EXACTLY ? sizeWidth : width + getPaddingLeft() + getPaddingRight(),
-                modeHeight == MeasureSpec.EXACTLY ? sizeHeight : height + getPaddingTop() + getPaddingBottom()//
+                modeHeight == MeasureSpec.EXACTLY ? sizeHeight : height + getPaddingTop() + getPaddingBottom()
         );
 
     }

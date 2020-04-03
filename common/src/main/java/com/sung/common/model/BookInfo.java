@@ -1,4 +1,4 @@
-package com.sung.bookexchange.mvp.model;
+package com.sung.common.model;
 
 import java.util.List;
 

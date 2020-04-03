@@ -1,6 +1,6 @@
 package com.sung.bookexchange.common;
 
-import android.support.annotation.ColorInt;
+import androidx.annotation.ColorInt;
 
 /**
  * Create by sung at 2018/12/6

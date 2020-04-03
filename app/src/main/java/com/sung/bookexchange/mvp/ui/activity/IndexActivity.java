@@ -10,7 +10,7 @@ import android.view.KeyEvent;
 import com.google.gson.Gson;
 import com.sung.bookexchange.R;
 import com.sung.bookexchange.api.RetrofitClient;
-import com.sung.bookexchange.common.Constants;
+import com.sung.common.Constants;
 import com.sung.bookexchange.common.ToolbarConfig;
 import com.sung.bookexchange.mvp.contract.IndexContract;
 import com.sung.bookexchange.utils.AppManager;

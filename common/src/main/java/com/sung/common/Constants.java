@@ -1,4 +1,4 @@
-package com.sung.bookexchange.common;
+package com.sung.common;
 
 /**
  * Create by sung at 2018/11/13

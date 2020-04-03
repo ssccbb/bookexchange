@@ -2,10 +2,6 @@ package com.sung.bookexchange.mvp.ui.activity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,6 +12,10 @@ import com.sung.bookexchange.mvp.ui.fragment.BaseFragment;
 import com.sung.bookexchange.utils.Log;
 import com.sung.bookexchange.utils.ScreenUtils;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import butterknife.ButterKnife;
 
 /**
@@ -54,7 +54,9 @@ public abstract class BaseActivity extends AppCompatActivity {
      *         此方法调用需要在onStart()之后
      * */
     protected void acceptToolbarConfig(ToolbarConfig config){
-        if (this.getSupportActionBar() == null) return;
+        if (this.getSupportActionBar() == null) {
+            return;
+        }
         try {
             ActionBar bar = getSupportActionBar();
             bar.setDisplayHomeAsUpEnabled(config.isDisplayBackAsUpEnable());
@@ -62,7 +64,9 @@ public abstract class BaseActivity extends AppCompatActivity {
             bar.setDisplayUseLogoEnabled(config.isDisplayLogoEnable());
             bar.setSubtitle(config.isDisplaySubTitleEnable() ? config.getTextSubTitle() : "");
             bar.setTitle(config.getTextTitle());
-            if (config.getResLogo() != -99) bar.setLogo(config.getResLogo());
+            if (config.getResLogo() != -99) {
+                bar.setLogo(config.getResLogo());
+            }
             if (config.isDisplayCenterTitleEnable()) {
                 bar.setDisplayShowTitleEnabled(false);
                 bar.setSubtitle("");

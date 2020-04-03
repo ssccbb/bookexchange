@@ -6,13 +6,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.sung.bookexchange.R;
 import com.sung.bookexchange.utils.AppManager;
 import com.sung.bookexchange.utils.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 /**
  * Create by sung at 2018/11/13
@@ -48,7 +49,7 @@ public class BaseApplication extends Application implements Application.Activity
         if (activity.findViewById(R.id.tool_bar) != null) {
             if (activity instanceof AppCompatActivity) {
                 AppCompatActivity compatActivity = (AppCompatActivity) activity;
-                Toolbar toolbar = (Toolbar) activity.findViewById(R.id.tool_bar);
+                Toolbar toolbar = activity.findViewById(R.id.tool_bar);
                 compatActivity.setSupportActionBar(toolbar);
                 compatActivity.getSupportActionBar().setDisplayShowTitleEnabled(true);
                 compatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);

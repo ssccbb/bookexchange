@@ -1,4 +1,4 @@
-package com.sung.bookexchange.mvp.model;
+package com.sung.common.model;
 
 /**
  * Create by sung at 2018/11/13

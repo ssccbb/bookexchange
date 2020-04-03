@@ -8,9 +8,10 @@ package com.sung.bookexchange.utils;
 
 import android.app.ActivityManager;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 
 import java.util.Stack;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Activity管理类

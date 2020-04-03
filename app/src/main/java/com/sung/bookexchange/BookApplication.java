@@ -7,8 +7,9 @@ import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.sung.bookexchange.common.BaseApplication;
-import com.sung.bookexchange.common.Constants;
 import com.sung.bookexchange.utils.Log;
+import com.sung.common.Constants;
+
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 import static com.sung.bookexchange.api.Api.APP_DOUBAN_DOMAIN;
 import static com.sung.bookexchange.api.Api.APP_GANK_DOMAIN;

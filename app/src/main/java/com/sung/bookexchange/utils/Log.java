@@ -4,7 +4,7 @@ import android.os.Environment;
 
 import com.sung.bookexchange.BookApplication;
 import com.sung.bookexchange.BuildConfig;
-import com.sung.bookexchange.common.Constants;
+import com.sung.common.Constants;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
