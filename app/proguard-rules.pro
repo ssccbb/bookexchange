@@ -157,3 +157,20 @@
 -keep enum org.greenrobot.eventbus.ThreadMode { *; }
 
 # -----------  EventBus ------------ #
+
+# -----------  retrofit ------------ #
+-dontwarn com.squareup.retrofit2.**
+-dontnote retrofit2.Platform
+-dontnote retrofit2.Platform$IOS$MainThreadExecutor
+-dontwarn retrofit2.Platform$Java8
+-keepattributes Signature
+-keepattributes Exceptions
+# -----------  retrofit ------------ #
+
+# -----------  OKhttp ------------ #
+-dontwarn okio.**
+# -----------  OKhttp ------------ #
+
+# -----------  Gson ------------ #
+-keep class com.example.testing.retrofitdemo.bean.**{*;}
+# -----------  Gson ------------ #

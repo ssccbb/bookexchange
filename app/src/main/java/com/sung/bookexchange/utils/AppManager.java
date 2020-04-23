@@ -8,6 +8,8 @@ package com.sung.bookexchange.utils;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 
 import java.util.Stack;
 
@@ -118,5 +120,18 @@ public class AppManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 获取渠道
+     */
+    public static String getFlavorChannel(Context context) {
+        try {
+            PackageManager pm = context.getPackageManager();
+            ApplicationInfo appInfo = pm.getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+            return appInfo.metaData.getString("CHANNEL");
+        } catch (PackageManager.NameNotFoundException ignored) {
+        }
+        return "";
     }
 }

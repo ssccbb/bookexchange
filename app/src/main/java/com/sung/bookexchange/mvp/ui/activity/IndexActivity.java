@@ -56,7 +56,7 @@ public class IndexActivity extends BaseActivity implements IVIndex {
                 .setDisplayElevationEnable(true)
                 .setColorBackground(R.color.theme_color)
                 .setColorText(R.color.app_text_dark)
-                .setTextTitle("主页")
+                .setTextTitle(getResources().getString(R.string.app_name))
                 .creat();
         acceptToolbarConfig(config);
     }
@@ -86,7 +86,7 @@ public class IndexActivity extends BaseActivity implements IVIndex {
         return super.onKeyDown(keyCode, event);
     }
 
-    @OnClick({R.id.iv_main, R.id.iv_table, R.id.iv_me})
+    @OnClick({R.id.iv_main, R.id.iv_table, R.id.iv_me, R.id.btn_about})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_main:
@@ -98,11 +98,18 @@ public class IndexActivity extends BaseActivity implements IVIndex {
             case R.id.iv_me:
                 changeRChinese();
                 break;
+            case R.id.btn_about:
+                AboutActivity.open(this);
+                break;
+            default:
+                break;
         }
     }
 
     public static void open(Activity context) {
-        if (context == null) return;
+        if (context == null) {
+            return;
+        }
         context.startActivity(new Intent(context, IndexActivity.class));
     }
 

@@ -4,8 +4,9 @@ apply plugin: 'com.android.application'
 def releaseTime() {
     return new Date().format("yyMMdd", TimeZone.getTimeZone("UTC"))
 }
+
 android {
-    def app_name = "BookEx"
+    def app_name = "bookex"
 
     compileSdkVersion rootProject.compileSdkVersion
     defaultConfig {
@@ -15,6 +16,7 @@ android {
         versionCode rootProject.versionCode
         versionName rootProject.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        flavorDimensions "default"
     }
 
     signingConfigs {
@@ -59,7 +61,7 @@ android {
                 def outputFile = output.outputFile
                 if (outputFile != null && outputFile.name.endsWith('.apk')) {
                     def fileName
-                    fileName = "${app_name}_Release_${defaultConfig.versionName}_${releaseTime()}" + ".apk"
+                    fileName = "${app_name}_${name}_Release_${defaultConfig.versionName}_${releaseTime()}" + ".apk"
                     outputFileName = fileName
                 }
             }
@@ -68,7 +70,7 @@ android {
                 def outputFile = output.outputFile
                 if (outputFile != null && outputFile.name.endsWith('.apk')) {
                     def fileName
-                    fileName = "${app_name}_Debug_${defaultConfig.versionName}_${releaseTime()}" + ".apk"
+                    fileName = "${app_name}_${name}_Debug_${defaultConfig.versionName}_${releaseTime()}" + ".apk"
                     outputFileName = fileName
                 }
             }
@@ -89,6 +91,29 @@ android {
     compileOptions {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
+    }
+    productFlavors {
+        //默认包
+        original {
+            versionCode rootProject.versionCode
+            versionName rootProject.versionName
+            manifestPlaceholders = [CHANNEL_VALUE: name]
+        }
+        //渠道及马甲包配置
+        googleplay {
+            //指定这个渠道的版本号
+            versionCode 2
+            versionName "1.2"
+            //指定区别于其他渠道的 applicationId
+            applicationId "com.sung.bookexchange.gp"
+            manifestPlaceholders = [CHANNEL_VALUE: name]
+        }
+        yingyongbao {//腾讯应用宝
+            versionCode 3
+            versionName "1.3"
+            applicationId "com.sung.bookexchange.yyb"
+            manifestPlaceholders = [CHANNEL_VALUE: name]
+        }
     }
 }
 

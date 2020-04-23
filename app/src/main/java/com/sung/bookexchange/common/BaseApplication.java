@@ -44,7 +44,7 @@ public class BaseApplication extends Application implements Application.Activity
 
     @Override
     public void onActivityStarted(Activity activity) {
-//        Log.saveOperationIntoLocal(activity+" --> onActivityStarted");
+//        Log.saveOperationIntoLocal(activity_about+" --> onActivityStarted");
 //        使用lifecycle接口 设置公共toolbar
         if (activity.findViewById(R.id.tool_bar) != null) {
             if (activity instanceof AppCompatActivity) {
@@ -72,7 +72,7 @@ public class BaseApplication extends Application implements Application.Activity
      */
     @Override
     public void onActivityResumed(Activity activity) {
-//        Log.saveOperationIntoLocal(activity+" --> onActivityResumed");
+//        Log.saveOperationIntoLocal(activity_about+" --> onActivityResumed");
     }
 
     @Override
@@ -82,12 +82,12 @@ public class BaseApplication extends Application implements Application.Activity
 
     @Override
     public void onActivityStopped(Activity activity) {
-//        Log.saveOperationIntoLocal(activity+" --> onActivityStopped");
+//        Log.saveOperationIntoLocal(activity_about+" --> onActivityStopped");
     }
 
     @Override
     public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
-//        Log.saveOperationIntoLocal(activity+" --> onActivitySaveInstanceState");
+//        Log.saveOperationIntoLocal(activity_about+" --> onActivitySaveInstanceState");
     }
 
     @Override

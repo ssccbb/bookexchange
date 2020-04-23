@@ -4,9 +4,6 @@ import android.Manifest;
 import android.os.Handler;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import android.os.Bundle;
 import android.widget.TextView;
 
 import com.sung.bookexchange.R;
