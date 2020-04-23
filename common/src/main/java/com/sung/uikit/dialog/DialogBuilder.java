@@ -100,7 +100,7 @@ public class DialogBuilder {
     }
 
     public CustomDialog creat() {
-        CustomDialog dialog = new CustomDialog();
+        CustomDialog dialog = new CustomDialog(mContext);
         return dialog;
     }
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">book exchange</string>
+    <string name="app_des">Book for book</string>
+
+    <string name="skip_hint">skip</string>
+
+    <string name="test">test test test test test test test test</string>
+</resources>

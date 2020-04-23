@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
+import android.view.View;
 
 import com.google.gson.Gson;
 import com.sung.bookexchange.R;
@@ -19,6 +20,7 @@ import com.sung.bookexchange.mvp.interfaces.IVIndex;
 
 import java.io.IOException;
 
+import butterknife.OnClick;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import okhttp3.ResponseBody;
@@ -31,13 +33,16 @@ public class IndexActivity extends BaseActivity implements IVIndex {
 
     private IndexContract mContract;
 
-    // ----------------   life cycle  ------------------
+    @Override
+    protected int getLayoutResID() {
+        return R.layout.activity_index;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_index);
+    protected void set() {
     }
+
+    // ----------------   life cycle  ------------------
 
     @Override
     protected void onResume() {
@@ -56,26 +61,6 @@ public class IndexActivity extends BaseActivity implements IVIndex {
         acceptToolbarConfig(config);
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (ABLE_EXIT_APP) {// double click exit
-                mDoubleClickHandler.removeCallbacksAndMessages(null);
-                AppManager.getAppManager().AppExit(this);
-                return true;
-            }
-            ABLE_EXIT_APP = true;
-            mDoubleClickHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    ABLE_EXIT_APP = false;
-                }
-            }, Constants.CONFIG_INDEX_EXIT_TIME);
-            return false;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
-
     // ----------------   view implement ------------------
 
     @Override
@@ -84,6 +69,37 @@ public class IndexActivity extends BaseActivity implements IVIndex {
     }
 
     // ----------------   public method  ------------------
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            // double click exit
+            if (ABLE_EXIT_APP) {
+                mDoubleClickHandler.removeCallbacksAndMessages(null);
+                AppManager.getAppManager().AppExit(this);
+                return true;
+            }
+            ABLE_EXIT_APP = true;
+            mDoubleClickHandler.postDelayed(() -> ABLE_EXIT_APP = false, Constants.Config.CONFIG_INDEX_EXIT_TIME);
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @OnClick({R.id.iv_main, R.id.iv_table, R.id.iv_me})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_main:
+                changeEnglish();
+                break;
+            case R.id.iv_table:
+                changeJapanese();
+                break;
+            case R.id.iv_me:
+                changeRChinese();
+                break;
+        }
+    }
 
     public static void open(Activity context) {
         if (context == null) return;

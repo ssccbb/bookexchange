@@ -33,10 +33,13 @@ public class SplashActivity extends BaseActivity {
     TextView mSkip;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-        mUIHandler.postDelayed(mSkipRunnable, Constants.CONFIG_SPLASH_SKIP_TIME);
+    protected int getLayoutResID() {
+        return R.layout.activity_splash;
+    }
+
+    @Override
+    protected void set() {
+        mUIHandler.postDelayed(mSkipRunnable, Constants.Config.CONFIG_SPLASH_SKIP_TIME);
         checkPermission();
         skipTimerStart();
     }
@@ -68,7 +71,7 @@ public class SplashActivity extends BaseActivity {
             if (!mPermissions.isEmpty()) {
                 mPermissionsHelper.permissionsCheck(mPermissions.peek(), 100);
             } else {
-                mUIHandler.postDelayed(mSkipRunnable, Constants.CONFIG_SPLASH_SKIP_TIME);
+                mUIHandler.postDelayed(mSkipRunnable, Constants.Config.CONFIG_SPLASH_SKIP_TIME);
                 skipTimerStart();
             }
         }
@@ -81,7 +84,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void skipTimerStart() {
-        arg = Constants.CONFIG_SPLASH_SKIP_TIME / 1000;
+        arg = Constants.Config.CONFIG_SPLASH_SKIP_TIME / 1000;
         Timer skip = new Timer();
         skip.scheduleAtFixedRate(new TimerTask() {
             @Override

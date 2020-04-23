@@ -52,9 +52,9 @@ public class BookApplication extends BaseApplication {
         try {
             DiskCacheConfig diskCacheConfig = DiskCacheConfig.newBuilder(context)
                     //最大缓存
-                    .setMaxCacheSize(Constants.CONFIG_FRESCO_CACHE_SIZE * 1024 * 1024)
+                    .setMaxCacheSize(Constants.Config.CONFIG_FRESCO_CACHE_SIZE * 1024 * 1024)
                     //子目录
-                    .setBaseDirectoryName(Constants.CONFIG_FRESCO_CACHE_DIR)
+                    .setBaseDirectoryName(Constants.Config.CONFIG_FRESCO_CACHE_DIR)
                     .setBaseDirectoryPathSupplier(() -> {
                         //还是推荐缓存到应用本身的缓存文件夹,这样卸载时能自动清除,其他清理软件也能扫描出来
                         return context.getCacheDir();
