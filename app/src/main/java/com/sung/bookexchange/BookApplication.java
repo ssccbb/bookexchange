@@ -6,10 +6,12 @@ import android.graphics.Bitmap;
 import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.sung.CommonApi;
 import com.sung.bookexchange.common.BaseApplication;
 import com.sung.bookexchange.utils.Log;
 import com.sung.common.Constants;
 
+import me.jessyan.retrofiturlmanager.NetApi;
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 import static com.sung.bookexchange.api.Api.APP_DOUBAN_DOMAIN;
 import static com.sung.bookexchange.api.Api.APP_GANK_DOMAIN;
@@ -40,6 +42,11 @@ public class BookApplication extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         FrescoInit(getContext());
+
+        //common包初始化
+        CommonApi.getInstance().attach(getContext());
+        //Net包初始化
+        NetApi.getInstance().attach(getContext());
         RetrofitInit();
     }
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">common</string>
+	<string name="app_copy">Copy successful</string>
+	<string name="app_loading_tips">Loading</string>
+	<string name="app_loading_empty">Nothing there?</string>
+	<string name="app_loading_error">Load failed</string>
+	<string name="app_loading_retry">Reload</string>
+	<string name="dialog_cancel">cancel</string>
+	<string name="dialog_ok">Determine</string>
+	<string name="dialog_know">got it</string>
+	<string name="dialog_wrong">click the wrong place</string>
+	<string name="dialog_loginout_tips">Are you sure to log out and exit?</string>
+
+</resources>

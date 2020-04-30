@@ -13,4 +13,4 @@
     android:paddingBottom="@dimen/dp_2"
     android:textColor="@android:color/white"
     android:textSize="@dimen/text_normal"
-    tools:text="@string/test" />
+    tools:text="@string/sys_test" />

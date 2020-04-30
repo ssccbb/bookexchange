@@ -1,8 +1,18 @@
 package com.sung.uikit.dialog;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
+
+import com.sung.common.R;
 
 /**
  * Create by sung at 2020-04-03
@@ -100,7 +110,60 @@ public class DialogBuilder {
     }
 
     public CustomDialog creat() {
-        CustomDialog dialog = new CustomDialog(mContext);
+        final CustomDialog dialog = new CustomDialog(mContext, R.style.CommonDialogStyle);
+        mRoot = LayoutInflater.from(mContext).inflate(R.layout.layout_cutom_dialog, null);
+        TextView title = mRoot.findViewById(R.id.tv_title);
+        TextView content = mRoot.findViewById(R.id.tv_content);
+        TextView negitive = mRoot.findViewById(R.id.tv_neg);
+        TextView positive = mRoot.findViewById(R.id.tv_pos);
+
+        title.setVisibility(mHasTitle ? View.VISIBLE : View.GONE);
+        content.setVisibility(mHasDesc ? View.VISIBLE : View.GONE);
+        negitive.setVisibility(mHasNegitive ? View.VISIBLE : View.GONE);
+        positive.setVisibility(mHasPositive ? View.VISIBLE : View.GONE);
+
+        if (!TextUtils.isEmpty(mTitle)) {
+            title.setText(mTitle);
+        }
+        if (!TextUtils.isEmpty(mDesc)) {
+            content.setText(mDesc);
+        }
+        if (!TextUtils.isEmpty(mPositive)) {
+            positive.setText(mPositive);
+        }
+        if (!TextUtils.isEmpty(mNegitive)) {
+            negitive.setText(mNegitive);
+        }
+
+        if (mPositiveListener != null) {
+            positive.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mPositiveListener.onPositive(dialog);
+                }
+            });
+        }
+        if (mNegitiveListener != null) {
+            negitive.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mNegitiveListener.onNegitive(dialog);
+                }
+            });
+        }
+
+        dialog.addContentView(mRoot, new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        Window dialogWindow = dialog.getWindow();
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+        DisplayMetrics d = mContext.getResources().getDisplayMetrics();
+        lp.width = (int) (d.widthPixels * 0.70);
+        lp.gravity = Gravity.CENTER;
+        dialogWindow.setAttributes(lp);
+        dialogWindow.setBackgroundDrawable(new ColorDrawable(0x00000000));
+        dialog.setContentView(mRoot);
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.setCancelable(true);
         return dialog;
     }
 }

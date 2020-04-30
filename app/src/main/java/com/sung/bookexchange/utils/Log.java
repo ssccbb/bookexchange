@@ -5,6 +5,7 @@ import android.os.Environment;
 import com.sung.bookexchange.BookApplication;
 import com.sung.bookexchange.BuildConfig;
 import com.sung.common.Constants;
+import com.sung.common.utils.FileUtils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -19,11 +20,11 @@ import java.util.Locale;
 public class Log {
     /**
      * 日志开关
-    * */
+     */
     private static boolean LOG_INTERCEPT = (!BuildConfig.DEBUG);
     /**
      * 记录交互
-     * */
+     */
     private static boolean SAVE_USER_OPERATION = true;
     private static DateFormat dateFormat;
 
@@ -36,10 +37,7 @@ public class Log {
         if (isIntercept() || strings.length <= 0) {
             return;
         }
-        try {
-            android.util.Log.d(strings.length > 1 ? strings[0] : Constants.TAG, readContent(strings));
-        } catch (Exception e) {
-        }
+        logLongString("d", strings.length > 1 ? strings[0] : Constants.TAG, readContent(strings));
     }
 
     /**
@@ -51,10 +49,7 @@ public class Log {
         if (isIntercept() || strings.length <= 0) {
             return;
         }
-        try {
-            android.util.Log.d(strings.length > 1 ? strings[0] : Constants.TAG, readContent(strings));
-        } catch (Exception e) {
-        }
+        logLongString("v", strings.length > 1 ? strings[0] : Constants.TAG, readContent(strings));
     }
 
     /**
@@ -66,10 +61,7 @@ public class Log {
         if (isIntercept() || strings.length <= 0) {
             return;
         }
-        try {
-            android.util.Log.e(strings.length > 1 ? strings[0] : Constants.TAG, readContent(strings));
-        } catch (Exception e) {
-        }
+        logLongString("e", strings.length > 1 ? strings[0] : Constants.TAG, readContent(strings));
     }
 
     /**
@@ -81,9 +73,45 @@ public class Log {
         if (isIntercept() || strings.length <= 0) {
             return;
         }
+        logLongString("i", strings.length > 1 ? strings[0] : Constants.TAG, readContent(strings));
+    }
+
+    /**
+     * 打印长文本
+     *
+     * @param method
+     * @param strings
+     */
+    private static void logLongString(String method, String... strings) {
         try {
-            android.util.Log.i(strings.length > 1 ? strings[0] : Constants.TAG, readContent(strings));
+            String tag = strings.length > 1 ? strings[0] : Constants.TAG;
+            String content = readContent(strings);
+            int max_str_length = 2001 - tag.length();
+            //大于4000时
+            while (content.length() > max_str_length) {
+                if (method.equals("d")) {
+                    android.util.Log.d(tag, content.substring(0, max_str_length));
+                } else if (method.equals("v")) {
+                    android.util.Log.v(tag, content.substring(0, max_str_length));
+                } else if (method.equals("e")) {
+                    android.util.Log.e(tag, content.substring(0, max_str_length));
+                } else if (method.equals("i")) {
+                    android.util.Log.i(tag, content.substring(0, max_str_length));
+                }
+                content = content.substring(max_str_length);
+            }
+            //剩余部分
+            if (method.equals("d")) {
+                android.util.Log.d(tag, content);
+            } else if (method.equals("v")) {
+                android.util.Log.v(tag, content);
+            } else if (method.equals("e")) {
+                android.util.Log.e(tag, content);
+            } else if (method.equals("i")) {
+                android.util.Log.i(tag, content);
+            }
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -114,8 +142,10 @@ public class Log {
      * @date: 2018/12/6_5:04 PM
      * @Description: 日志记录
      */
-    public static void saveOperationIntoLocal(String content){
-        if (!SAVE_USER_OPERATION) return;
+    public static void saveOperationIntoLocal(String content) {
+        if (!SAVE_USER_OPERATION) {
+            return;
+        }
         try {
             if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                 return;
@@ -125,11 +155,11 @@ public class Log {
             }
             content = "\r\n" + millis2String(System.currentTimeMillis()) + " : " + content + "\r\n";
             FileUtils.writeFileFromString(BookApplication.getInstance().getLogPath(), content, true);
-        }catch (Exception e){
+        } catch (Exception e) {
         }
     }
 
-    private static String millis2String(long millis){
+    private static String millis2String(long millis) {
         if (dateFormat == null) {
             dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         }

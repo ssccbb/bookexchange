@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">コモン</string>
+	<string name="app_copy">コピー成功</string>
+	<string name="app_loading_tips">読み込み中</string>
+	<string name="app_loading_empty">何もないです</string>
+	<string name="app_loading_error">読み込みに失敗しました</string>
+	<string name="app_loading_retry">再読み込み</string>
+	<string name="dialog_cancel">キャンセル</string>
+	<string name="dialog_ok">を選択します</string>
+	<string name="dialog_know">分かりました</string>
+	<string name="dialog_wrong">注文を間違えました</string>
+	<string name="dialog_loginout_tips">ログアウトを確認してログアウトしますか？</string>
+
+</resources>

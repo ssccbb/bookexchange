@@ -88,41 +88,6 @@ public class Loading extends View {
      * 定时器
      */
     private Timer animation = new Timer();
-    /**
-     * 定时器
-     */
-    private TimerTask task = new TimerTask() {
-        @Override
-        public void run() {
-            if (increase) {
-                progress++;
-                if (progress >= 100) {
-                    // 阙值保险
-                    progress = 100;
-                    increase = false;
-                }
-            } else {
-                progress--;
-                if (progress <= 0) {
-                    // 阙值保险
-                    progress = 0;
-                    increase = true;
-                }
-            }
-            // 三点动态的提示文字
-            if (0 <= progress && progress <= 33) {
-                hint = attr_text + ".";
-            }
-            if (33 < progress && progress <= 66) {
-                hint = attr_text + "..";
-            }
-            if (66 < progress && progress <= 100) {
-                hint = attr_text + "...";
-            }
-            // 重绘
-            mUiHandler.sendEmptyMessage(0);
-        }
-    };
     private Handler mUiHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -206,6 +171,36 @@ public class Loading extends View {
         }
     }
 
+    private void draw() {
+        if (increase) {
+            progress++;
+            if (progress >= 100) {
+                // 阙值保险
+                progress = 100;
+                increase = false;
+            }
+        } else {
+            progress--;
+            if (progress <= 0) {
+                // 阙值保险
+                progress = 0;
+                increase = true;
+            }
+        }
+        // 三点动态的提示文字
+        if (0 <= progress && progress <= 33) {
+            hint = attr_text + ".";
+        }
+        if (33 < progress && progress <= 66) {
+            hint = attr_text + "..";
+        }
+        if (66 < progress && progress <= 100) {
+            hint = attr_text + "...";
+        }
+        // 重绘
+        mUiHandler.sendEmptyMessage(0);
+    }
+
     /**
      * view的显示/隐藏状态变更时调用
      *
@@ -216,7 +211,12 @@ public class Loading extends View {
         if (animation == null) return;
         if (visibility == VISIBLE) {
             animation = new Timer();
-            animation.scheduleAtFixedRate(task, 0, 10);
+            animation.scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run() {
+                    draw();
+                }
+            }, 0, 10);
         } else {
             animation.cancel();
         }
@@ -242,7 +242,12 @@ public class Loading extends View {
     public void show() {
         this.setVisibility(VISIBLE);
         if (animation != null && !going) {
-            animation.scheduleAtFixedRate(task, 0, 10);
+            animation.scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run() {
+                    draw();
+                }
+            }, 0, 10);
             going = true;
         }
     }

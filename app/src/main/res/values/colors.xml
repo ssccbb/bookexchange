@@ -4,9 +4,12 @@
     <color name="colorPrimaryDark">@color/theme_vice_color</color>
     <color name="colorAccent">@color/theme_vice_color</color>
 
-    <color name="theme_color">#a1ccd3</color>
-    <color name="theme_vice_color">#B0E0E6</color>
-    <color name="theme_emphasize_color">#a1ccd3</color>
+    <color name="theme_color">#366fec</color>
+    <color name="theme_vice_color">#366fec</color>
+    <color name="theme_emphasize_color">#366fec</color>
+
+    <color name="theme_tab_selected">@color/theme_color</color>
+    <color name="theme_tab_unselect">#c7ced4</color>
 
     <color name="app_text_light">@android:color/black</color>
     <color name="app_text_dark">@android:color/white</color>
@@ -15,5 +18,17 @@
 
     <color name="app_background_light">@android:color/white</color>
     <color name="app_background_dark">#56000000</color>
-    <color name="app_line_light">#56ffffff</color>
+    <color name="app_line_light">#56f3f5f7</color>
+    
+    <color name="login_black">#13171e</color>
+    <color name="login_tips">#c5ced5</color>
+    <color name="login_high_light">#246df5</color>
+
+    <color name="home_drawer_menu_text">#12161d</color>
+    <color name="home_drawer_loginout_background">#246df5</color>
+    <color name="home_drawer_uid">#879aa9</color>
+
+    <color name="index_list_gray">#bbc7ce</color>
+    <color name="index_list_green">#03ac8e</color>
+    <color name="index_list_red">#ce405b</color>
 </resources>

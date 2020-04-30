@@ -33,6 +33,19 @@ public final class ScreenUtils {
     }
 
     /**
+     * 获取状态栏高度
+     *
+     * @param context
+     * @return
+     */
+    public static int getStatusBarHeight(Context context) {
+        Resources resources = context.getResources();
+        int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
+        int height = resources.getDimensionPixelSize(resourceId);
+        return height;
+    }
+
+    /**
      * 获取屏幕的宽度（单位：px）
      *
      * @return 屏幕宽
@@ -54,13 +67,13 @@ public final class ScreenUtils {
      * 设置屏幕为全屏
      * <p>需在 {@code setContentView} 之前调用</p>
      *
-     * @param activity activity_about
+     * @param activity activity
      */
     public static void setFullScreen(@NonNull final Activity activity) {
         activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
         activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //hideNavigation(activity_about);
+        //hideNavigation(activity);
     }
 
     /**
@@ -84,7 +97,7 @@ public final class ScreenUtils {
      * <p>设置Activity的android:configChanges="orientation|keyboardHidden|screenSize"（4.0以上必须带最后一个参数）时
      * 切屏不会重新调用各个生命周期，只会执行onConfigurationChanged方法</p>
      *
-     * @param activity activity_about
+     * @param activity activity
      */
     public static void setLandscape(@NonNull final Activity activity) {
         activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -93,7 +106,7 @@ public final class ScreenUtils {
     /**
      * 设置屏幕为竖屏
      *
-     * @param activity activity_about
+     * @param activity activity
      */
     public static void setPortrait(@NonNull final Activity activity) {
         activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -120,7 +133,7 @@ public final class ScreenUtils {
     /**
      * 获取屏幕旋转角度
      *
-     * @param activity activity_about
+     * @param activity activity
      * @return 屏幕旋转角度
      */
     public static int getScreenRotation(@NonNull final Activity activity) {
@@ -140,7 +153,7 @@ public final class ScreenUtils {
     /**
      * 截屏
      *
-     * @param activity activity_about
+     * @param activity activity
      * @return Bitmap
      */
     public static Bitmap screenShot(@NonNull final Activity activity) {
@@ -150,7 +163,7 @@ public final class ScreenUtils {
     /**
      * 截屏
      *
-     * @param activity activity_about
+     * @param activity activity
      * @return Bitmap
      */
     public static Bitmap screenShot(@NonNull final Activity activity, boolean isDeleteStatusBar) {

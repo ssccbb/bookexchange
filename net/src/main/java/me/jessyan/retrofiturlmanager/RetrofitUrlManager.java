@@ -35,8 +35,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-import static me.jessyan.retrofiturlmanager.Utils.checkNotNull;
-import static me.jessyan.retrofiturlmanager.Utils.checkUrl;
+import static me.jessyan.retrofiturlmanager.Retrofit.checkNotNull;
+import static me.jessyan.retrofiturlmanager.Retrofit.checkUrl;
 
 /**
  * ================================================
@@ -102,8 +102,10 @@ public class RetrofitUrlManager {
 
     private HttpUrl baseUrl;
     private int pathSize;
-    private boolean isRun = true; //默认开始运行, 可以随时停止运行, 比如您在 App 启动后已经不需要再动态切换 BaseUrl 了
-    private boolean debug = false;//在 Debug  模式下可以打印日志
+    //默认开始运行, 可以随时停止运行, 比如您在 App 启动后已经不需要再动态切换 BaseUrl 了
+    private boolean isRun = true;
+    //在 Debug  模式下可以打印日志
+    private boolean debug = false;
     private final Map<String, HttpUrl> mDomainNameHub = new HashMap<>();
     private final Interceptor mInterceptor;
     private final List<onUrlChangeListener> mListeners = new ArrayList<>();
@@ -122,7 +124,8 @@ public class RetrofitUrlManager {
 
 
     private RetrofitUrlManager() {
-        if (!DEPENDENCY_OKHTTP) { //使用本框架必须依赖 Okhttp
+        if (!DEPENDENCY_OKHTTP) {
+            //使用本框架必须依赖 Okhttp
             throw new IllegalStateException("Must be dependency Okhttp");
         }
         UrlParser urlParser = new DefaultUrlParser();
@@ -131,8 +134,10 @@ public class RetrofitUrlManager {
         this.mInterceptor = new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
-                if (!isRun()) // 可以在 App 运行时, 随时通过 setRun(false) 来结束本框架的运行
+                if (!isRun()) {
+                    // 可以在 App 运行时, 随时通过 setRun(false) 来结束本框架的运行
                     return chain.proceed(chain.request());
+                }
                 return chain.proceed(processRequest(chain.request()));
             }
         };
@@ -193,8 +198,9 @@ public class RetrofitUrlManager {
 
         if (null != httpUrl) {
             HttpUrl newUrl = mUrlParser.parseUrl(httpUrl, request.url());
-            if (debug)
+            if (debug) {
                 Log.d(RetrofitUrlManager.TAG, "The new url is { " + newUrl.toString() + " }, old url is { " + request.url().toString() + " }");
+            }
 
             if (listeners != null) {
                 for (int i = 0; i < listeners.length; i++) {
@@ -373,7 +379,9 @@ public class RetrofitUrlManager {
      */
     public String setPathSizeOfUrl(String url, int pathSize) {
         checkNotNull(url, "url cannot be null");
-        if (pathSize < 0) throw new IllegalArgumentException("pathSize must be >= 0");
+        if (pathSize < 0) {
+            throw new IllegalArgumentException("pathSize must be >= 0");
+        }
         return url + IDENTIFICATION_PATH_SIZE + pathSize;
     }
 
@@ -387,7 +395,7 @@ public class RetrofitUrlManager {
     public void setGlobalDomain(String globalDomain) {
         checkNotNull(globalDomain, "globalDomain cannot be null");
         synchronized (mDomainNameHub) {
-            mDomainNameHub.put(GLOBAL_DOMAIN_NAME, Utils.checkUrl(globalDomain));
+            mDomainNameHub.put(GLOBAL_DOMAIN_NAME, Retrofit.checkUrl(globalDomain));
         }
     }
 
@@ -417,7 +425,7 @@ public class RetrofitUrlManager {
         checkNotNull(domainName, "domainName cannot be null");
         checkNotNull(domainUrl, "domainUrl cannot be null");
         synchronized (mDomainNameHub) {
-            mDomainNameHub.put(domainName, Utils.checkUrl(domainUrl));
+            mDomainNameHub.put(domainName, Retrofit.checkUrl(domainUrl));
         }
     }
 
@@ -522,10 +530,12 @@ public class RetrofitUrlManager {
      */
     private String obtainDomainNameFromHeaders(Request request) {
         List<String> headers = request.headers(DOMAIN_NAME);
-        if (headers == null || headers.size() == 0)
+        if (headers == null || headers.size() == 0) {
             return null;
-        if (headers.size() > 1)
+        }
+        if (headers.size() > 1) {
             throw new IllegalArgumentException("Only one Domain-Name in the headers");
+        }
         return request.header(DOMAIN_NAME);
     }
 }

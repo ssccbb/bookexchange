@@ -21,6 +21,7 @@ public class ToolbarConfig {
     private @ColorInt
     int colorText = -99;
     private int resLogo = -99;
+    private int resBackButton = -99;
 
     public boolean isDisplayBackAsUpEnable() {
         return displayBackAsUpEnable;
@@ -60,6 +61,10 @@ public class ToolbarConfig {
 
     public int getResLogo() {
         return resLogo;
+    }
+
+    public int getResBackButton() {
+        return resBackButton;
     }
 
     public int getColorText() {
@@ -121,6 +126,11 @@ public class ToolbarConfig {
 
         public Builder setResLogo(int resLogo) {
             config.resLogo = resLogo;
+            return this;
+        }
+
+        public Builder setResBackButton(int resBackButton) {
+            config.resBackButton = resBackButton;
             return this;
         }
 

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">易書</string>
-    <string name="app_des">以書易書</string>
-
-    <string name="skip_hint">跳過</string>
-
-    <string name="test">測試測試測試測試測試測試測試測試</string>
-</resources>

@@ -1,5 +1,7 @@
 package com.sung.common.bean;
 
+import com.sung.common.HomeTabType;
+
 /**
  * Create by sung at 2020-04-04
  *
@@ -9,6 +11,21 @@ package com.sung.common.bean;
 public class HomeTabBean {
     private String mTabName;
     private int mTabIcon;
+    private HomeTabType mTabType;
+
+    public HomeTabBean(HomeTabType mTabType, String mTabName, int mTabIcon) {
+        this.mTabType = mTabType;
+        this.mTabName = mTabName;
+        this.mTabIcon = mTabIcon;
+    }
+
+    public HomeTabType getmTabType() {
+        return mTabType;
+    }
+
+    public void setmTabType(HomeTabType mTabType) {
+        this.mTabType = mTabType;
+    }
 
     public String getmTabName() {
         return mTabName;

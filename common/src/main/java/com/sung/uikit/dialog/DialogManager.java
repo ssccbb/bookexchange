@@ -2,6 +2,8 @@ package com.sung.uikit.dialog;
 
 import android.content.Context;
 
+import com.sung.common.R;
+
 /**
  * Create by sung at 2020-04-03
  *
@@ -20,12 +22,35 @@ public class DialogManager {
      * @author sung at 2020-04-04
      * @notice 无点击监听
      */
-    public CustomDialog openSimpleTipDialog(Context context, String tips, IPositiveClickListener listener) {
+    public static CustomDialog openSimpleTipDialog(Context context, String tips, IPositiveClickListener listener) {
         return new DialogBuilder(context)
                 .titleGone()
                 .desc(tips)
-                .positive("知道了")
+                .positive(context.getResources().getString(R.string.dialog_know))
+                .addPositiveListener(listener)
                 .negitiveGone()
+                .creat();
+    }
+
+    /**
+     * 展示简单文案供选择的提示弹窗
+     *
+     * @param context
+     * @param tips        文案
+     * @param posListener
+     * @param negListener
+     * @return dialog
+     * @author sung at 2020-04-04
+     * @notice 监听
+     */
+    public static CustomDialog openSimpleChooseTipDialog(Context context, String tips, IPositiveClickListener posListener, INegitiveClickListener negListener) {
+        return new DialogBuilder(context)
+                .titleGone()
+                .desc(tips)
+                .negitive(context.getResources().getString(R.string.dialog_cancel))
+                .positive(context.getResources().getString(R.string.dialog_ok))
+                .addPositiveListener(posListener)
+                .addNegitiveListener(negListener)
                 .creat();
     }
 
@@ -38,12 +63,12 @@ public class DialogManager {
      * @author sung at 2020-04-04
      * @notice
      */
-    public CustomDialog openLoginoutDialog(Context context, IPositiveClickListener<CustomDialog> loginoutListener) {
+    public static CustomDialog openLoginoutDialog(Context context, IPositiveClickListener<CustomDialog> loginoutListener) {
         return new DialogBuilder(context)
                 .titleGone()
-                .desc("确认注销并退出吗？")
-                .positive("退出")
-                .negitive("点错了")
+                .desc(context.getResources().getString(R.string.dialog_loginout_tips))
+                .positive(context.getResources().getString(R.string.dialog_ok))
+                .negitive(context.getResources().getString(R.string.dialog_wrong))
                 .addPositiveListener(loginoutListener)
                 .addNegitiveListener(new INegitiveClickListener<CustomDialog>() {
                     @Override

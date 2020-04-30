@@ -1,4 +1,4 @@
-package com.sung.bookexchange.utils;
+package com.sung.common.utils;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;

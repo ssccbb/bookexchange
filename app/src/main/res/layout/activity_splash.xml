@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/tv_skip"
-        tools:text="@string/skip_hint"
+        tools:text="@string/sys_skip_hint"
         android:textSize="@dimen/text_small"
         android:textColor="#d1ffffff"
         android:background="@drawable/bg_skip"

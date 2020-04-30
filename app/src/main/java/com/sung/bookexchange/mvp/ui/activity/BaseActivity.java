@@ -1,6 +1,5 @@
 package com.sung.bookexchange.mvp.ui.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sung.bookexchange.BookApplication;
 import com.sung.bookexchange.R;
@@ -17,8 +17,8 @@ import com.sung.bookexchange.mvp.ui.fragment.BaseFragment;
 import com.sung.bookexchange.utils.Log;
 import com.sung.bookexchange.utils.ScreenUtils;
 import com.sung.common.Constants;
+import com.sung.common.cache.MCache;
 
-import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,6 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        EventBus.getDefault().register(this);
         setContentView(getLayoutResID());
         set();
     }
@@ -67,6 +68,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 //        acceptToolbarConfig(config);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        EventBus.getDefault().unregister(this);
+    }
+
     protected abstract void set();
 
     protected abstract int getLayoutResID();
@@ -84,6 +91,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         try {
             ActionBar bar = getSupportActionBar();
             bar.setDisplayHomeAsUpEnabled(config.isDisplayBackAsUpEnable());
+//            Drawable back = getResources().getDrawable(config.getResBackButton() == -99 ? R.mipmap.ic_back_white : config.getResBackButton());
+//            bar.setHomeAsUpIndicator(back);
             bar.setDisplayShowTitleEnabled(config.isDisplayTitleEnable());
             bar.setDisplayUseLogoEnabled(config.isDisplayLogoEnable());
             bar.setSubtitle(config.isDisplaySubTitleEnable() ? config.getTextSubTitle() : "");
@@ -178,6 +187,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         rebot();
     }
 
+    public void changeKorean() {
+        SharedPreferences sharedPreferences = getSharedPreferences(Constants.DEFAULT_SP_NAME, MODE_PRIVATE);
+        sharedPreferences.edit().putString(Constants.Config.CONFIG_LANGUAGE, LanContextWrapper.LANG_HK).apply();
+        rebot();
+    }
+
     /**
      * 重启至主页
      */
@@ -198,6 +213,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         } catch (IllegalStateException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 重新登录
+     */
+    protected void relogin() {
+        MCache.clearLogin();
+//        Router.goLoginActivity(this);
+        Toast.makeText(this, "relogin", Toast.LENGTH_SHORT).show();
     }
 
 }

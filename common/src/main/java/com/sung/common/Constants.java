@@ -7,7 +7,32 @@ package com.sung.common;
  */
 public class Constants {
     public static final String TAG = "com.sung.bookexchange";
+    public static final String SOCKET_TAG = "WebsocketClient";
+
     public static final String DEFAULT_SP_NAME = "com.sung.sp";
+    public static final String TEMP_SP_NAME = "com.sung.tempsp";
+
+    public class Net {
+        public static final int NET_OK = 200;
+        public static final int NET_EMPTY = 201;
+        public static final int NET_FAIL = 202;
+        public static final int NET_EXCEPTION = 203;
+
+        public static final String NET_BASE_DOMAIN = "http://www.ft-ccweb.co/";
+        public static final String NET_BASE_DOMAIN_TEST = "https://www.ftdime.com";
+        public static final String NET_BASE_NAME = "ftcoin";
+    }
+
+    public class MCache {
+        public static final String LOGIN = "sp_login";
+        public static final String LOGIN_INFO = "login_info";
+        public static final String LOGIN_ACCOUNT = "login_account";
+        public static final String LOGIN_TOKEN = "login_token";
+    }
+
+    public class MTempCache {
+        public static final String TEMP_LOGIN_ACCOUNT = "temp_login_account";
+    }
 
     public class Config {
         /* fresco */
@@ -20,5 +45,8 @@ public class Constants {
 
         /* 国际化相关 */
         public static final String CONFIG_LANGUAGE = "com.sung.sp.language";
+
+        /* 夜览模式相关 */
+        public static final String CONFIG_NIGHT_MODE = "com.sung.config.nightmode";
     }
 }

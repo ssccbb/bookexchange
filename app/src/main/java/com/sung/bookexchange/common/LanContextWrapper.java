@@ -25,6 +25,7 @@ public class LanContextWrapper extends ContextWrapper {
     public static final String LANG_CN = "cn";
     public static final String LANG_EN = "en";
     public static final String LANG_JP = "jp";
+    public static final String LANG_KO = "ko";
 
     public LanContextWrapper(Context ctx) {
         super(ctx);
@@ -45,7 +46,10 @@ public class LanContextWrapper extends ContextWrapper {
                 } else if (locale.contains("en")) {
                     langFlag = LANG_EN;
                     newLocale = Locale.ENGLISH;
-                } else if (locale.startsWith("zh")) {
+                } else if (locale.contains("ko")){
+                    langFlag = LANG_KO;
+                    newLocale = Locale.KOREA;
+                }else if (locale.startsWith("zh")) {
                     String region = Locale.getDefault().getDisplayCountry();
                     if (region.equals("香港特別行政區") || region.equals("台灣")) {
                         langFlag = LANG_HK;
@@ -73,6 +77,9 @@ public class LanContextWrapper extends ContextWrapper {
                 break;
             case LANG_CN:
                 newLocale = Locale.SIMPLIFIED_CHINESE;
+                break;
+            case LANG_KO:
+                newLocale = Locale.KOREA;
                 break;
             //默认为汉语
             default:
@@ -126,5 +133,10 @@ public class LanContextWrapper extends ContextWrapper {
             country = resources.getConfiguration().locale.getCountry();
         }
         return country;
+    }
+
+    public static String getLangTag(Context context){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.DEFAULT_SP_NAME, MODE_PRIVATE);
+        return sharedPreferences.getString(Constants.Config.CONFIG_LANGUAGE, "def");
     }
 }

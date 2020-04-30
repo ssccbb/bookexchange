@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">易書</string>
-    <string name="app_des">本を交換する</string>
-
-    <string name="skip_hint">スキップ</string>
-
-    <string name="test">テスト テスト テスト テスト テスト</string>
-</resources>
