@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Yi Shu</string>
+	<string name="app_des">Book to book</string>
+	<string name="app_cache_tips">Clear cache?</string>
+	<string name="app_open_nightmode_tips">Do you want to turn on night mode?</string>
+	<string name="app_close_nightmode_tips">Do you want to turn off night mode?</string>
+	<string name="app_activity_language">language</string>
+	<string name="app_activity_about">About us</string>
+	<string name="sys_skip_hint">skip</string>
+	<string name="sys_test">Sample text</string>
+	<string name="sys_login_out">Sign out</string>
+	<string name="sys_login_in">Sign in</string>
+	<string name="sys_change_lang_tips">Switching languages will reload and go back to the home page. Do you need to switch?</string>
+	<string name="sys_done">Determine</string>
+	<string name="sys_cancel">cancel</string>
+	<string name="sys_net_error">Server error</string>
+	<string name="login">Sign in</string>
+	<string name="login_phone">mailbox</string>
+	<string name="login_pwd">Password</string>
+	<string name="login_regist">register</string>
+	<string name="login_regist_tips">No lmcoin account yet?</string>
+	<string name="login_tiny_tips">Log in to lmcoin</string>
+	<string name="login_forget">Forget password</string>
+	<string name="login_success">Login successful</string>
+	<string name="login_failed">Login failed</string>
+	<string name="login_empty_phone">Please enter the correct account number</string>
+	<string name="login_empty_pwd">Please enter the correct password</string>
+	<string name="regist_title">Email registration</string>
+	<string name="regist_vertify">Send verification code</string>
+	<string name="regist_vertify_send">has been sent</string>
+	<string name="regist_email">Please enter email</string>
+	<string name="regist_pwd">Please input a password</string>
+	<string name="regist_pwd2">Please enter the password again</string>
+	<string name="regist_email_code">Verification Code</string>
+	<string name="regist_code">Promotion code</string>
+	<string name="regist_next">next step</string>
+	<string name="regist_empty_email_code">Please enter the correct email verification code</string>
+	<string name="regist_empty_code">Please enter the correct invitation code</string>
+	<string name="regist_not_same_pwd">Two password entries are inconsistent</string>
+	<string name="regist_get_email_code">Please get email verification code</string>
+	<string name="regist_wrong_email_code">Email verification code error</string>
+	<string name="reset_title">reset password </string>
+	<string name="home_tab_index">home page</string>
+	<string name="home_tab_member">Member</string>
+	<string name="home_tab_photo">Album</string>
+	<string name="home_tab_mine">My</string>
+	<string name="home_drawer_change_language">Language switching</string>
+	<string name="home_drawer_about_us">About us</string>
+	<string name="home_drawer_night_mode">Night mode</string>
+	<string name="home_drawer_clear_cache">Clear cache</string>
+	<string name="about_contact">contact us</string>
+	<string name="about_privacy">Privacy policy</string>
+
+</resources>

@@ -140,13 +140,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         return this;
     }
 
-    /**
-     * default preferences
-     */
-    protected SharedPreferences getPreferences() {
-        return BookApplication.getInstance().getPreferences();
-    }
-
     protected FragmentTransaction getSupportFragmentTransaction() {
         return getSupportFragmentManager().beginTransaction();
     }

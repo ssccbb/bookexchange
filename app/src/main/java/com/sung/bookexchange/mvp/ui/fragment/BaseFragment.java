@@ -57,10 +57,6 @@ public abstract class BaseFragment extends Fragment {
 
     }
 
-    protected SharedPreferences getPreferences() {
-        return BookApplication.getInstance().getPreferences();
-    }
-
     protected FragmentManager getSupportFragmentManager() {
         return getActivity() != null ? getActivity().getSupportFragmentManager() : null;
     }

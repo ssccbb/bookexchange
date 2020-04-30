@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="home_tab_icons">
+        <item>@drawable/home_tab_index_selector</item>
+        <item>@drawable/home_tab_member_selector</item>
+        <item>@drawable/home_tab_photo_selector</item>
+        <item>@drawable/home_tab_mine_selector</item>
+    </integer-array>
+    <string-array name="home_tab_titles">
+        <item>@string/home_tab_index</item>
+        <item>@string/home_tab_member</item>
+        <item>@string/home_tab_photo</item>
+        <item>@string/home_tab_mine</item>
+    </string-array>
+</resources>

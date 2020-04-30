@@ -22,7 +22,6 @@ import androidx.appcompat.widget.Toolbar;
  */
 public class BaseApplication extends Application implements Application.ActivityLifecycleCallbacks {
     protected Context context;
-    protected SharedPreferences mPreferences;
 
     @Override
     public void onCreate() {
@@ -120,13 +119,4 @@ public class BaseApplication extends Application implements Application.Activity
         return getPackageName();
     }
 
-    /**
-     * @return sp
-     */
-    public SharedPreferences getPreferences() {
-        if (mPreferences == null) {
-            mPreferences = getSharedPreferences(getAppPackageName(), MODE_PRIVATE);
-        }
-        return mPreferences;
-    }
 }

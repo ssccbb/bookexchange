@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">易書</string>
+	<string name="app_des">以書易書</string>
+	<string name="app_cache_tips">清除緩存嗎？</string>
+	<string name="app_open_nightmode_tips">要開啟夜間模式嗎？</string>
+	<string name="app_close_nightmode_tips">要關閉夜間模式嗎？</string>
+	<string name="app_activity_language">語言</string>
+	<string name="app_activity_about">關於我們</string>
+	<string name="sys_skip_hint">跳過</string>
+	<string name="sys_test">示例文字</string>
+	<string name="sys_login_out">登出</string>
+	<string name="sys_login_in">登入</string>
+	<string name="sys_change_lang_tips">切換語言將重新載入並回退到首頁，需要切換嗎？</string>
+	<string name="sys_done">確定</string>
+	<string name="sys_cancel">取消</string>
+	<string name="sys_net_error">服務器錯誤</string>
+	<string name="login">登入</string>
+	<string name="login_phone">郵箱</string>
+	<string name="login_pwd">密碼</string>
+	<string name="login_regist">注册</string>
+	<string name="login_regist_tips">還沒有LMCoin帳號？</string>
+	<string name="login_tiny_tips">登入LMCoin</string>
+	<string name="login_forget">忘記密碼</string>
+	<string name="login_success">登入成功</string>
+	<string name="login_failed">登入失敗</string>
+	<string name="login_empty_phone">請輸入正確的帳號</string>
+	<string name="login_empty_pwd">請輸入正確的密碼</string>
+	<string name="regist_title">郵箱註冊</string>
+	<string name="regist_vertify">發送驗證碼</string>
+	<string name="regist_vertify_send">已發送</string>
+	<string name="regist_email">請輸入郵箱</string>
+	<string name="regist_pwd">請輸入密碼</string>
+	<string name="regist_pwd2">請再次輸入密碼</string>
+	<string name="regist_email_code">驗證碼</string>
+	<string name="regist_code">推廣碼</string>
+	<string name="regist_next">下一步</string>
+	<string name="regist_empty_email_code">請輸入正確的郵箱驗證碼</string>
+	<string name="regist_empty_code">請輸入正確的邀請碼</string>
+	<string name="regist_not_same_pwd">兩次密碼輸入不一致</string>
+	<string name="regist_get_email_code">請獲取郵箱驗證碼</string>
+	<string name="regist_wrong_email_code">郵箱驗證碼錯誤</string>
+	<string name="reset_title">重置密碼</string>
+	<string name="home_tab_index">首頁</string>
+	<string name="home_tab_member">會員</string>
+	<string name="home_tab_photo">相册</string>
+	<string name="home_tab_mine">我的</string>
+	<string name="home_drawer_change_language">語言切換</string>
+	<string name="home_drawer_about_us">關於我們</string>
+	<string name="home_drawer_night_mode">夜間模式</string>
+	<string name="home_drawer_clear_cache">清除緩存</string>
+	<string name="about_contact">聯繫我們</string>
+	<string name="about_privacy">隱私政策</string>
+
+</resources>
