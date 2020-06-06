@@ -11,7 +11,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
-
 import com.sung.common.R;
 
 import java.util.Timer;

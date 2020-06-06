@@ -157,7 +157,7 @@ dependencies {
 //    compile ('io.socket:socket.io-client:0.8.3') {
 //        exclude group: 'org.json', module: 'json'
 //    }
-
+    implementation 'com.github.xfans:VoiceWaveView:1.0.2'
     implementation project(':net')
     implementation project(':common')
 }

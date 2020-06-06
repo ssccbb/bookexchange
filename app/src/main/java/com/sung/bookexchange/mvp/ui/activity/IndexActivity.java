@@ -1,6 +1,8 @@
 package com.sung.bookexchange.mvp.ui.activity;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
@@ -93,7 +95,7 @@ public class IndexActivity extends BaseActivity implements IVIndex,HomeTabLayout
     private void setNavigation(UserBean user) {
         mDrawerAccount.setText(user == null ? MCache.getAccount() : user.account);
         mDrawerUid.setVisibility(user == null ? View.GONE : View.VISIBLE);
-        mDrawerUid.setText(user == null ? "" : "UID:" + user.uid);
+        mDrawerUid.setText(user == null ? "" : "UID:" + user.id);
         mNightMode.setChecked(MCache.isNighrModeOpen());
     }
 
@@ -231,4 +233,10 @@ public class IndexActivity extends BaseActivity implements IVIndex,HomeTabLayout
     }
 
     // ----------------   net method  ------------------
+    public static void open(Activity context) {
+        if (context == null) {
+            return;
+        }
+        context.startActivity(new Intent(context, IndexActivity.class));
+    }
 }
