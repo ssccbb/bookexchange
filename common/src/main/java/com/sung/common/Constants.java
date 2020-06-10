@@ -18,9 +18,9 @@ public class Constants {
         public static final int NET_FAIL = 202;
         public static final int NET_EXCEPTION = 203;
 
-        public static final String NET_BASE_DOMAIN = "http://www.ft-ccweb.co/";
-        public static final String NET_BASE_DOMAIN_TEST = "https://www.ftdime.com";
-        public static final String NET_BASE_NAME = "ftcoin";
+        public static final String NET_BASE_DOMAIN = BuildConfig.NET_DOMAIN_TEST;
+        public static final String NET_BASE_DOMAIN_TEST = BuildConfig.NET_DOMAIN;
+        public static final String NET_BASE_NAME = BuildConfig.NET_DOMAIN_NAME;
     }
 
     public class MCache {
@@ -34,6 +34,11 @@ public class Constants {
         public static final String TEMP_LOGIN_ACCOUNT = "temp_login_account";
     }
 
+    public class Websocket {
+        public static final String WEBSOCKET_NEW_MESSAGE = "kline";
+        public static final String WEBSOCKET_URI = "http://47.52.73.70:3000";
+    }
+
     public class Config {
         /* fresco */
         public static final int CONFIG_FRESCO_CACHE_SIZE = 30;// 兆节
@@ -43,10 +48,13 @@ public class Constants {
         public static final int CONFIG_SPLASH_SKIP_TIME = 2000;
         public static final int CONFIG_INDEX_EXIT_TIME = 2000;
 
+        /* vertify */
+        public static final int CONFIG_VERTIFY_WAIT_TIME = 60 * 1000;
+
         /* 国际化相关 */
         public static final String CONFIG_LANGUAGE = "com.sung.sp.language";
 
         /* 夜览模式相关 */
-        public static final String CONFIG_NIGHT_MODE = "com.sung.config.nightmode";
+        public static final String CONFIG_NIGHT_MODE = "config.nightmode";
     }
 }

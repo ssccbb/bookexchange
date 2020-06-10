@@ -1,5 +1,8 @@
 package com.sung.common.utils;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 /**
  * <pre>
  *     author: Blankj
@@ -190,5 +193,34 @@ public final class StringUtils {
 
     public static String emptyConvert(String string) {
         return string == null ? "" : string;
+    }
+
+    public static String formatNumber(Object number) {
+//        try {
+//            NumberFormat ddf1 = NumberFormat.getNumberInstance();
+//            ddf1.setMaximumFractionDigits(4);
+//            String format = ddf1.format(number);
+//            if (format.contains(".")) {
+//                String[] split = format.split(".");
+//                int l = split[split.length - 1].length();
+//                if (l <= 4) {
+//                    for (int i = 0; i < (4 - l); i++) {
+//                        format = format + "0";
+//                    }
+//                }
+//            } else {
+//                format = format + ".0000";
+//            }
+//            return format;
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        return String.valueOf(number);
+        return new DecimalFormat("0.0000").format(number);
+    }
+
+    public static double formatNumberD(double d){
+        String format = String.format("%.4f",d);
+        return Double.parseDouble(format);
     }
 }

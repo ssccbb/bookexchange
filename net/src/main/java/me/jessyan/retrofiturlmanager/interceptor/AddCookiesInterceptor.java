@@ -2,6 +2,7 @@ package me.jessyan.retrofiturlmanager.interceptor;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 import android.util.Log;
 
 import java.io.IOException;

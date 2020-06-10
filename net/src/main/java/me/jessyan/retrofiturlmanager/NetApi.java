@@ -12,7 +12,7 @@ import android.content.Context;
 public class NetApi extends Application {
     private Context context;
 
-    public static class Holder {
+    private static class Holder {
         public static NetApi instance = new NetApi();
     }
 

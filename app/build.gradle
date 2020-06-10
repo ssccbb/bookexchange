@@ -8,43 +8,47 @@ def releaseTime() {
 android {
     def app_name = "bookex"
 
-    compileSdkVersion rootProject.compileSdkVersion
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
         applicationId "com.sung.bookexchange"
-        minSdkVersion rootProject.minSdkVersion
-        targetSdkVersion rootProject.targetSdkVersion
-        versionCode rootProject.versionCode
-        versionName rootProject.versionName
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         flavorDimensions "default"
     }
 
     signingConfigs {
         debug {
-            storeFile file("../extras/keystore/sung723.jks")
-            keyAlias 'sung723'
-            keyPassword '646693'
-            storePassword '646693'
+            keyAlias rootProject.ext.sign.keyAlias
+            keyPassword rootProject.ext.sign.keyPassword
+            storeFile file(rootProject.ext.sign.storeFile)
+            storePassword rootProject.ext.sign.storePassword
         }
 
         release {
-            storeFile file("../extras/keystore/sung723.jks")
-            keyAlias 'sung723'
-            keyPassword '646693'
-            storePassword '646693'
+            keyAlias rootProject.ext.sign.keyAlias
+            keyPassword rootProject.ext.sign.keyPassword
+            storeFile file(rootProject.ext.sign.storeFile)
+            storePassword rootProject.ext.sign.storePassword
         }
     }
 
     buildTypes {
         debug {
-            buildConfigField 'String', 'Sever', '""'
+            buildConfigField 'String', 'NET_DOMAIN', rootProject.ext.app.net_domain
+            buildConfigField 'String', 'NET_DOMAIN_TEST', rootProject.ext.app.net_domain_test
+            buildConfigField 'String', 'NET_DOMAIN_NAME', rootProject.ext.app.net_domain_name
             System.out.println("buildDebug-----------------------------------------------------------")
 
             signingConfig signingConfigs.debug
         }
 
         release {
-            buildConfigField 'String', 'Sever', '""'
+            buildConfigField 'String', 'NET_DOMAIN', rootProject.ext.app.net_domain
+            buildConfigField 'String', 'NET_DOMAIN_TEST', rootProject.ext.app.net_domain_test
+            buildConfigField 'String', 'NET_DOMAIN_NAME', rootProject.ext.app.net_domain_name
             System.out.println("buildRelease-----------------------------------------------------------")
 
             zipAlignEnabled true
@@ -101,8 +105,8 @@ android {
     productFlavors {
         //默认包
         original {
-            versionCode rootProject.versionCode
-            versionName rootProject.versionName
+            versionCode rootProject.ext.android.versionCode
+            versionName rootProject.ext.android.versionName
             manifestPlaceholders = [CHANNEL_VALUE: name]
         }
         //渠道及马甲包配置

@@ -19,11 +19,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/dp_20"
-        android:background="@drawable/shape_blue"
+        android:background="@drawable/shape_stroke_blue"
         android:paddingLeft="@dimen/dp_20"
         android:paddingTop="@dimen/dp_5"
         android:paddingRight="@dimen/dp_20"
         android:paddingBottom="@dimen/dp_5"
         android:text="@string/app_loading_retry"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/theme_color" />
 </FrameLayout>

@@ -1,5 +1,6 @@
 package com.sung.uikit.widget;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -10,7 +11,12 @@ import android.graphics.RectF;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.view.animation.TranslateAnimation;
+
 import com.sung.common.R;
 
 import java.util.Timer;
@@ -84,15 +90,9 @@ public class Loading extends View {
      */
     private Paint text_paint;
     /**
-     * 定时器
-     */
-    private Timer animation = new Timer();
-    private Handler mUiHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            invalidate();
-        }
-    };
+     * 动画
+     * */
+    private PorgressAnimation roteAnimation;
 
     public Loading(Context context) {
         super(context);
@@ -172,14 +172,14 @@ public class Loading extends View {
 
     private void draw() {
         if (increase) {
-            progress++;
+            progress = progress + 5;
             if (progress >= 100) {
                 // 阙值保险
                 progress = 100;
                 increase = false;
             }
         } else {
-            progress--;
+            progress = progress - 5;
             if (progress <= 0) {
                 // 阙值保险
                 progress = 0;
@@ -196,28 +196,24 @@ public class Loading extends View {
         if (66 < progress && progress <= 100) {
             hint = attr_text + "...";
         }
+//        Log.e(Loading.class.getSimpleName(),progress+"");
         // 重绘
-        mUiHandler.sendEmptyMessage(0);
+        postInvalidate();
     }
 
     /**
      * view的显示/隐藏状态变更时调用
      *
-     * @description 为防止不主动调用show()/dismiss(),需要根据状态取消/打开timer定时器
+     * @description 为防止不主动调用show()/dismiss(),需要根据状态取消/打开动画
      */
     @Override
     protected void onVisibilityChanged(View changedView, int visibility) {
-        if (animation == null) return;
+        if (roteAnimation == null) return;
         if (visibility == VISIBLE) {
-            animation = new Timer();
-            animation.scheduleAtFixedRate(new TimerTask() {
-                @Override
-                public void run() {
-                    draw();
-                }
-            }, 0, 10);
+            this.startAnimation(roteAnimation);
         } else {
-            animation.cancel();
+            roteAnimation.cancel();
+            this.clearAnimation();
         }
     }
 
@@ -240,15 +236,10 @@ public class Loading extends View {
      */
     public void show() {
         this.setVisibility(VISIBLE);
-        if (animation != null && !going) {
-            animation.scheduleAtFixedRate(new TimerTask() {
-                @Override
-                public void run() {
-                    draw();
-                }
-            }, 0, 10);
-            going = true;
+        if (roteAnimation == null){
+            roteAnimation = new PorgressAnimation();
         }
+        this.startAnimation(roteAnimation);
     }
 
     /**
@@ -256,9 +247,29 @@ public class Loading extends View {
      */
     public void dismiss() {
         this.setVisibility(GONE);
-        if (animation != null && going) {
-            animation.cancel();
-            going = false;
+        if (roteAnimation != null) {
+            roteAnimation.cancel();
+            roteAnimation = null;
+        }
+        this.clearAnimation();
+    }
+
+    private class PorgressAnimation extends Animation {
+        @Override
+        protected void applyTransformation(float interpolatedTime, Transformation t) {
+            super.applyTransformation(interpolatedTime, t);
+            Log.e(Loading.class.getSimpleName(),interpolatedTime+"");
+            draw();
+        }
+
+        @Override
+        public void initialize(int width, int height, int parentWidth, int parentHeight) {
+            super.initialize(width, height, parentWidth, parentHeight);
+            setDuration(500);
+            setRepeatCount(ValueAnimator.INFINITE);
+            setFillAfter(true);
+            going = true;
+            progress = 0;
         }
     }
 }

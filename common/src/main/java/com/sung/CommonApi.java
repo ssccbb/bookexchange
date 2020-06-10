@@ -13,7 +13,7 @@ import com.sung.common.utils.SPUtils;
  */
 public class CommonApi extends Application {
 
-    public static class Holder {
+    private static class Holder {
         public static CommonApi instance = new CommonApi();
     }
 

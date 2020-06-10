@@ -48,7 +48,7 @@ public class BaseInterceptor implements Interceptor{
                 JSONObject object = new JSONObject(json);
                 String token = object.getString("login_token");
                 if (!TextUtils.isEmpty(token)) {
-                    String cookie = "{\"token\":\"" + token + "\"}";
+                    String cookie = "token=" + token;
                     Log.e("cookies", cookie);
                     builder.addHeader("Cookie", cookie);
                 } else {

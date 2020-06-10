@@ -4,13 +4,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.TextView;
 
 import com.sung.bookexchange.R;
 import com.sung.bookexchange.common.ToolbarConfig;
 import com.sung.bookexchange.utils.AppManager;
+import com.sung.uikit.widget.Loading;
+
+import java.util.List;
 
 import butterknife.BindView;
+import butterknife.BindViews;
+import butterknife.OnClick;
 import me.xfans.lib.voicewaveview.VoiceWaveView;
 import me.xfans.lib.voicewaveview.WaveMode;
 
@@ -27,6 +33,8 @@ public class AboutActivity extends BaseActivity {
     TextView mChannerl;
     @BindView(R.id.voiceWaveView)
     VoiceWaveView waveView;
+    @BindViews({R.id.loading,R.id.loading1,R.id.loading2,R.id.loading3})
+    List<Loading> mLoadings;
 
     @Override
     protected int getLayoutResID() {
@@ -60,6 +68,10 @@ public class AboutActivity extends BaseActivity {
         waveView.addFooter(4);
         waveView.addFooter(2);
         waveView.start();
+
+        for (Loading loading : mLoadings) {
+            loading.show();
+        }
     }
 
     // ----------------   life cycle  ------------------
@@ -90,5 +102,18 @@ public class AboutActivity extends BaseActivity {
             return;
         }
         context.startActivity(new Intent(context, AboutActivity.class));
+    }
+
+    @OnClick({R.id.tv_name})
+    public void onClick(View v){
+        switch (v.getId()){
+            case R.id.tv_name:
+                for (Loading loading : mLoadings) {
+                    if (loading.getVisibility()!=View.VISIBLE){
+                        loading.show();
+                    }
+                }
+                break;
+        }
     }
 }
