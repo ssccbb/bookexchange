@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_copy">複製成功</string>
+    <string name="app_loading_empty">什麼都沒有</string>
+    <string name="app_loading_error">加載失敗</string>
+    <string name="app_loading_retry">重新載入</string>
+    <string name="app_loading_tips">加載中</string>
+    <string name="app_name">常見的</string>
+    <string name="app_oprate_failed">操作失敗</string>
+    <string name="app_oprate_succ">操作成功</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="dialog_know">知道了</string>
+    <string name="dialog_loginout_tips">確認註銷並退出嗎？</string>
+    <string name="dialog_ok">確定</string>
+    <string name="dialog_order">確認下單</string>
+    <string name="dialog_order_equal_all">全部平倉</string>
+    <string name="dialog_order_equal_empty">只平空單</string>
+    <string name="dialog_order_equal_mutil">只平多單</string>
+    <string name="dialog_order_equal_tips">確認平倉？</string>
+    <string name="dialog_order_fixed_price">限價</string>
+    <string name="dialog_order_hand">手</string>
+    <string name="dialog_order_market_price">市價</string>
+    <string name="dialog_order_may_earn">預期盈利：</string>
+    <string name="dialog_order_may_lost">預期虧損：</string>
+    <string name="dialog_order_mutiple">倍</string>
+    <string name="dialog_order_safe">保證金</string>
+    <string name="dialog_order_service">手續費</string>
+    <string name="dialog_order_set_earn">止盈價：</string>
+    <string name="dialog_order_set_earnlost">設定止盈止損</string>
+    <string name="dialog_order_set_lost">止損價：</string>
+    <string name="dialog_order_type">類型</string>
+    <string name="dialog_wrong">點錯了</string>
+</resources>

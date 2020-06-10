@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/dp_15"
+    android:paddingTop="@dimen/dp_15"
+    android:paddingRight="@dimen/dp_15"
+    android:paddingBottom="@dimen/dp_25">
+
+    <TextView
+        android:id="@+id/tv_contract_order_equal_all"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_30"
+        android:background="@drawable/shape_blue_selector"
+        android:gravity="center"
+        android:maxWidth="@dimen/dp_80"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_3"
+        android:paddingRight="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_3"
+        android:text="@string/dialog_order_equal_all"
+        android:textColor="@color/theme_color"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tv_contract_order_equal_mutil"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_30"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="@drawable/shape_green_selector"
+        android:gravity="center"
+        android:maxWidth="@dimen/dp_80"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_3"
+        android:paddingRight="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_3"
+        android:text="@string/dialog_order_equal_mutil"
+        android:textColor="@color/theme_green"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tv_contract_order_equal_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_30"
+        android:background="@drawable/shape_red_selector"
+        android:gravity="center"
+        android:maxWidth="@dimen/dp_80"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_3"
+        android:paddingRight="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_3"
+        android:text="@string/dialog_order_equal_empty"
+        android:textColor="@color/theme_red"
+        android:textSize="13sp" />
+</LinearLayout>

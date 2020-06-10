@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_market_price"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:padding="@dimen/dp_10"
+        android:text="@string/dialog_order_market_price"
+        android:background="?android:selectableItemBackground"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="#56f3f5f7"/>
+    <TextView
+        android:id="@+id/tv_fixed_price"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:padding="@dimen/dp_10"
+        android:text="@string/dialog_order_fixed_price"
+        android:background="?android:selectableItemBackground"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

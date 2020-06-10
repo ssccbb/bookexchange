@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="theme_color">#246df5</color>
+    <color name="theme_green">#03ac8e</color>
+    <color name="theme_red">#ce405b</color>
+    <declare-styleable name="Loading">
+        <attr format="string" name="loading_text"/>
+        <attr format="integer" name="loading_text_size"/>
+        <attr format="color" name="loading_text_color"/>
+        <attr format="color" name="loading_stroke_color"/>
+        <attr format="color" name="loading_solid_color"/>
+    </declare-styleable>
+    <declare-styleable name="TagFlowLayout">
+        <attr format="integer" name="max_select"/>
+        <attr name="tag_gravity">
+            <enum name="left" value="-1"/>
+            <enum name="center" value="0"/>
+            <enum name="right" value="1"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="VerticalRollingTextView">
+        <!--两次动画之间的间隔-->
+        <attr format="integer" name="animInterval"/>
+        <!--展示条目的个数-->
+        <attr format="integer" name="itemCount"/>
+        <!--多行显示时自适应文字的最大文字大小-->
+        <attr format="dimension" name="maxTextSize"/>
+        <!--多行显示时自适应文字的最小文字大小-->
+        <attr format="dimension" name="minTextSize"/>
+    </declare-styleable>
+    <dimen name="actionBarSize">50dp</dimen>
+    <dimen name="divider">1dp</dimen>
+    <dimen name="dp_1">1dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_100">100dp</dimen>
+    <dimen name="dp_120">120dp</dimen>
+    <dimen name="dp_15">15dp</dimen>
+    <dimen name="dp_150">150dp</dimen>
+    <dimen name="dp_2">2dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_200">200dp</dimen>
+    <dimen name="dp_25">25dp</dimen>
+    <dimen name="dp_3">3dp</dimen>
+    <dimen name="dp_30">30dp</dimen>
+    <dimen name="dp_35">35dp</dimen>
+    <dimen name="dp_4">4dp</dimen>
+    <dimen name="dp_40">40dp</dimen>
+    <dimen name="dp_45">45dp</dimen>
+    <dimen name="dp_5">5dp</dimen>
+    <dimen name="dp_50">50dp</dimen>
+    <dimen name="dp_55">55dp</dimen>
+    <dimen name="dp_60">60dp</dimen>
+    <dimen name="dp_80">80dp</dimen>
+    <dimen name="index_icon_height">45dp
+    </dimen>
+    <dimen name="text_large">18sp</dimen>
+    <dimen name="text_normal">14sp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="text_xlarge">20sp</dimen>
+    <dimen name="text_xxlarge">22sp</dimen>
+    <dimen name="text_xxxlarge">25sp</dimen>
+    <string name="app_copy">复制成功</string>
+    <string name="app_loading_empty">什么都没有</string>
+    <string name="app_loading_error">加载失败</string>
+    <string name="app_loading_retry">重新载入</string>
+    <string name="app_loading_tips">加载中</string>
+    <string name="app_name">LMCoin</string>
+    <string name="app_oprate_failed">操作失败</string>
+    <string name="app_oprate_succ">操作成功</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="dialog_know">知道了</string>
+    <string name="dialog_loginout_tips">确认注销并退出吗?</string>
+    <string name="dialog_ok">确定</string>
+    <string name="dialog_order">确认下单</string>
+    <string name="dialog_order_equal_all">全部平仓</string>
+    <string name="dialog_order_equal_empty">只平空单</string>
+    <string name="dialog_order_equal_mutil">只平多单</string>
+    <string name="dialog_order_equal_tips">确认平仓？</string>
+    <string name="dialog_order_fixed_price">限价</string>
+    <string name="dialog_order_hand">手</string>
+    <string name="dialog_order_market_price">市价</string>
+    <string name="dialog_order_may_earn">预期盈利：</string>
+    <string name="dialog_order_may_lost">预期亏损：</string>
+    <string name="dialog_order_mutiple">倍</string>
+    <string name="dialog_order_safe">保证金</string>
+    <string name="dialog_order_service">手续费</string>
+    <string name="dialog_order_set_earn">止盈价：</string>
+    <string name="dialog_order_set_earnlost">设置止盈止损</string>
+    <string name="dialog_order_set_lost">止损价：</string>
+    <string name="dialog_order_type">类型</string>
+    <string name="dialog_wrong">点错了</string>
+    <style name="AnimFade">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+    <style name="CommonDialogStyle" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <!--是否去除边框-->
+        <item name="android:windowFrame">@null</item>
+        <!--是否模糊-->
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+    </style>
+    <style name="CommonLoaderStyle">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:visibility">gone</item>
+    </style>
+    <style name="DialogFragmentStyle" parent="@android:style/Theme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_gravity">bottom|center_horizontal</item>
+    </style>
+    <style name="FadeDialogFragmentStyle" parent="@style/DialogFragmentStyle">
+        <item name="android:windowAnimationStyle">@style/AnimFade</item>
+    </style>
+</resources>

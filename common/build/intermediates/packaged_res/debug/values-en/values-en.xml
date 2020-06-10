@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_copy">Copy successful</string>
+    <string name="app_loading_empty">Nothing there?</string>
+    <string name="app_loading_error">Load failed</string>
+    <string name="app_loading_retry">Reload</string>
+    <string name="app_loading_tips">Loading</string>
+    <string name="app_name">common</string>
+    <string name="app_oprate_failed">operation failed</string>
+    <string name="app_oprate_succ">Operation successful</string>
+    <string name="dialog_cancel">cancel</string>
+    <string name="dialog_know">got it</string>
+    <string name="dialog_loginout_tips">Are you sure to log out and exit?</string>
+    <string name="dialog_ok">determine</string>
+    <string name="dialog_order">Confirm order</string>
+    <string name="dialog_order_equal_all">Full close out</string>
+    <string name="dialog_order_equal_empty">Flat sheet only</string>
+    <string name="dialog_order_equal_mutil">Flat multiple</string>
+    <string name="dialog_order_equal_tips">Confirm close out?</string>
+    <string name="dialog_order_fixed_price">fixed price</string>
+    <string name="dialog_order_hand">hand</string>
+    <string name="dialog_order_market_price">market price</string>
+    <string name="dialog_order_may_earn">Expected profit:</string>
+    <string name="dialog_order_may_lost">Expected loss:</string>
+    <string name="dialog_order_mutiple">times</string>
+    <string name="dialog_order_safe">bond</string>
+    <string name="dialog_order_service">Service Charge</string>
+    <string name="dialog_order_set_earn">Closing price:</string>
+    <string name="dialog_order_set_earnlost">Set stop loss</string>
+    <string name="dialog_order_set_lost">Stop loss price:</string>
+    <string name="dialog_order_type">type</string>
+    <string name="dialog_wrong">click the wrong place</string>
+</resources>
